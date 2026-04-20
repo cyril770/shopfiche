@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopFiche — Descriptions produits SEO pour Shopify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --ink: #0a0a0a;
+            --paper: #fafaf8;
+            --accent: #1a5cff;
+            --accent-light: #e8efff;
+            --muted: #6b6b6b;
+            --border: #e2e2e0;
+            --glow: rgba(26, 92, 255, 0.08);
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(250, 250, 248, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+        }
+        .logo span { color: var(--accent); }
+        .nav-tag {
+            font-size: 0.75rem;
+            color: var(--muted);
+            padding: 0.3rem 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            width: fit-content;
+            margin-bottom: 2rem;
+        }
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 em {
+            font-style: normal;
+            color: var(--accent);
+        }
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--muted);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        /* DEMO SECTION */
+        .demo {
+            padding: 2rem 2rem 6rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .demo-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.04);
+        }
+        .demo-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            background: #fefefe;
+        }
+        .demo-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+        }
+        .demo-dot:nth-child(1) { background: #ff5f57; }
+        .demo-dot:nth-child(2) { background: #ffbd2e; }
+        .demo-dot:nth-child(3) { background: #28c840; }
+        .demo-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 320px;
+        }
+        .demo-input {
+            padding: 2rem;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .demo-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            font-weight: 500;
+        }
+        .demo-product {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+        .demo-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+        .demo-tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            background: var(--accent-light);
+            color: var(--accent);
+            border-radius: 6px;
+        }
+        .demo-output {
+            padding: 2rem;
+            background: var(--glow);
+            position: relative;
+        }
+        .demo-output p {
+            font-size: 0.92rem;
+            line-height: 1.75;
+            color: #333;
+        }
+        .demo-output .seo-highlight {
+            background: rgba(26, 92, 255, 0.12);
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+        .demo-output .gen-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* STATS ROW */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 6rem;
+            gap: 1.5rem;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: white;
+        }
+        .stat-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: -0.03em;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 0.5rem;
+        }
+
+        /* FEATURES */
+        .features {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 6rem;
+        }
+        .features-header {
+            margin-bottom: 3rem;
+        }
+        .features-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.5rem;
+        }
+        .features-header p {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .feature-card {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: white;
+            transition: border-color 0.3s;
+        }
+        .feature-card:hover {
+            border-color: var(--accent);
+        }
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .feature-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .feature-card p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* CLOSING */
+        .closing {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+            text-align: center;
+        }
+        .closing h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+        .closing p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        /* MOBILE */
+        @media (max-width: 640px) {
+            nav { padding: 1rem; }
+            .hero { padding: 7rem 1.5rem 3rem; }
+            .demo-body { grid-template-columns: 1fr; }
+            .demo-input { border-right: none; border-bottom: 1px solid var(--border); }
+            .stats { grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .closing { padding: 3rem 1.5rem 4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Shop<span>Fiche</span></div>
+        <div class="nav-tag">29$/mois</div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-badge">Optimise pour Google.fr</div>
+        <h1>Vos fiches produits Shopify, <em>ecrites par l'IA</em></h1>
+        <p class="hero-sub">ShopFiche genere des descriptions produits SEO en francais, optimisees pour Google.fr. 500 fiches en quelques secondes. Zero intervention humaine.</p>
+    </section>
+
+    <section class="demo">
+        <div class="demo-card">
+            <div class="demo-header">
+                <div class="demo-dot"></div>
+                <div class="demo-dot"></div>
+                <div class="demo-dot"></div>
+            </div>
+            <div class="demo-body">
+                <div class="demo-input">
+                    <div class="demo-label">Produit importe</div>
+                    <div class="demo-product">Montre Connectee Sport X200</div>
+                    <div class="demo-tags">
+                        <span class="demo-tag">Bluetooth 5.3</span>
+                        <span class="demo-tag">Etanche IP68</span>
+                        <span class="demo-tag">Suivi cardiaque</span>
+                        <span class="demo-tag">7 jours batterie</span>
+                    </div>
+                    <div class="demo-label" style="margin-top: 1rem;">Mots-cles SEO</div>
+                    <div class="demo-tags">
+                        <span class="demo-tag">montre connectee sport</span>
+                        <span class="demo-tag">montre fitness pas cher</span>
+                    </div>
+                </div>
+                <div class="demo-output">
+                    <div class="gen-badge">Genere par ShopFiche</div>
+                    <p>Decouvrez la <span class="seo-highlight">montre connectee sport</span> X200, votre alliee au quotidien. Avec son suivi cardiaque en temps reel, son etancheite IP68 et sa batterie longue duree de 7 jours, elle vous accompagne de la salle de sport a la piscine. Connectee en Bluetooth 5.3 a votre smartphone, recevez vos notifications sans manquer un battement. La <span class="seo-highlight">montre fitness pas cher</span> qui ne fait aucun compromis sur la performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-card">
+            <div class="stat-num">&lt;5s</div>
+            <div class="stat-label">Par description generee</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Francais natif, pas traduit</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">29$</div>
+            <div class="stat-label">Par mois, descriptions illimitees</div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-header">
+            <h2>Concu pour le SEO francais</h2>
+            <p>Pas une traduction. Un outil pense pour Google.fr des le depart.</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🇫🇷</div>
+                <h3>Francais natif</h3>
+                <p>Des descriptions qui sonnent naturel. Pas de traductions robotiques. Le ton, les expressions, la structure : tout est pense pour le marche francophone.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>SEO Google.fr</h3>
+                <p>Mots-cles integres naturellement, densite optimale, balises meta generees. Vos fiches remontent dans les resultats de recherche francophones.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Generation en masse</h3>
+                <p>500 fiches en quelques minutes. Importez vos produits Shopify, cliquez, c'est fait. Ideal pour les catalogues dropshipping volumineux.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3>Integration Shopify</h3>
+                <p>Connectez votre boutique en un clic. ShopFiche importe vos produits, genere les descriptions et les publie directement sur vos fiches.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="closing">
+        <h2>Arretez d'ecrire vos fiches a la main.<br>Laissez l'IA faire le travail.</h2>
+        <p>ShopFiche transforme chaque produit de votre catalogue en une fiche SEO qui vend. En francais. En secondes.</p>
+    </section>
+
+    <footer>
+        ShopFiche &mdash; Descriptions produits SEO pour Shopify
+    </footer>
+
+
+    <!-- Polsia Analytics -->
+    <script>
+    (function() {
+        var slug = 'shopfiche';
+        if (!slug) return;
+        var vid = localStorage.getItem('polsia_vid');
+        if (!vid) {
+            vid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = Math.random() * 16 | 0;
+                return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+            });
+            localStorage.setItem('polsia_vid', vid);
+        }
+        new Image().src = 'https://polsia.com/api/beacon/pixel?s=' + encodeURIComponent(slug) + '&v=' + encodeURIComponent(vid);
+    })();
+    </script>
+</body>
+</html>
