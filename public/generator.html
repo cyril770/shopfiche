@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopFiche — Generateur de descriptions produits SEO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --ink: #0a0a0a; --paper: #fafaf8; --accent: #1a5cff;
+            --accent-light: #e8efff; --muted: #6b6b6b; --border: #e2e2e0;
+        }
+        body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); }
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            padding: 1.2rem 2rem; display: flex; align-items: center;
+            justify-content: space-between;
+            background: rgba(250,250,248,0.9); backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.3rem; letter-spacing: -0.03em; }
+        .logo span { color: var(--accent); }
+        .nav-back { font-size: 0.85rem; color: var(--muted); text-decoration: none; }
+        .nav-back:hover { color: var(--ink); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 7rem 2rem 4rem; }
+        h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        h1 span { color: var(--accent); }
+        .subtitle { color: var(--muted); margin-bottom: 2.5rem; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        .panel {
+            background: white; border: 1px solid var(--border);
+            border-radius: 16px; padding: 1.5rem;
+        }
+        .panel-title {
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+            color: var(--muted); text-transform: uppercase; margin-bottom: 1.2rem;
+            padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+        }
+        .field { margin-bottom: 1.2rem; }
+        label { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+        input[type="text"], textarea {
+            width: 100%; padding: 0.75rem 1rem;
+            border: 1px solid var(--border); border-radius: 10px;
+            font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+            background: var(--paper); color: var(--ink);
+            transition: border-color 0.2s;
+        }
+        input[type="text"]:focus, textarea:focus {
+            outline: none; border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(26,92,255,0.08);
+        }
+        textarea { resize: vertical; min-height: 100px; }
+        .keywords-container { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
+        .keyword-tag {
+            display: inline-flex; align-items: center; gap: 0.3rem;
+            background: var(--accent-light); color: var(--accent);
+            font-size: 0.8rem; font-weight: 500; padding: 0.3rem 0.7rem;
+            border-radius: 100px;
+        }
+        .keyword-tag button {
+            background: none; border: none; cursor: pointer;
+            color: var(--accent); font-size: 1rem; line-height: 1; padding: 0;
+        }
+        .keyword-input-row { display: flex; gap: 0.5rem; }
+        .keyword-input-row input { flex: 1; }
+        .btn-add {
+            padding: 0.75rem 1rem; background: var(--accent-light);
+            color: var(--accent); border: none; border-radius: 10px;
+            font-weight: 600; cursor: pointer; white-space: nowrap; font-size: 0.85rem;
+        }
+        .suggestions { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+        .suggestion-chip {
+            font-size: 0.75rem; padding: 0.25rem 0.6rem;
+            border: 1px solid var(--border); border-radius: 100px;
+            cursor: pointer; color: var(--muted); background: white;
+            transition: all 0.15s;
+        }
+        .suggestion-chip:hover { border-color: var(--accent); color: var(--accent); }
+        .tone-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .tone-btn {
+            padding: 0.5rem 1rem; border: 1px solid var(--border);
+            border-radius: 100px; background: white; cursor: pointer;
+            font-size: 0.85rem; font-family: 'DM Sans', sans-serif;
+            transition: all 0.15s;
+        }
+        .tone-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+        .btn-generate {
+            width: 100%; padding: 1rem; background: var(--accent); color: white;
+            border: none; border-radius: 12px; font-size: 1rem; font-weight: 600;
+            cursor: pointer; margin-top: 1.5rem; font-family: 'DM Sans', sans-serif;
+            transition: opacity 0.2s; letter-spacing: -0.01em;
+        }
+        .btn-generate:hover { opacity: 0.9; }
+        .btn-generate:disabled { opacity: 0.5; cursor: not-allowed; }
+        .result-area { min-height: 200px; }
+        .word-count { font-size: 0.75rem; color: var(--muted); margin-bottom: 1rem; }
+        .description-text {
+            font-size: 0.95rem; line-height: 1.7; color: var(--ink);
+            white-space: pre-wrap;
+        }
+        .description-text .highlight { background: var(--accent-light); color: var(--accent); border-radius: 3px; padding: 0 2px; }
+        .meta-section { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+        .meta-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.5rem; }
+        .meta-text { font-size: 0.85rem; color: var(--ink); line-height: 1.5; }
+        .btn-row { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+        .btn-copy {
+            flex: 1; padding: 0.75rem; background: var(--accent); color: white;
+            border: none; border-radius: 10px; cursor: pointer;
+            font-weight: 600; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+        }
+        .btn-regen {
+            flex: 1; padding: 0.75rem; background: white; color: var(--ink);
+            border: 1px solid var(--border); border-radius: 10px; cursor: pointer;
+            font-weight: 600; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+        }
+        .empty-state { text-align: center; padding: 3rem 1rem; color: var(--muted); }
+        .empty-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .loading-dots span { animation: blink 1.4s infinite; display: inline-block; }
+        .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes blink { 0%,80%,100% { opacity: 0; } 40% { opacity: 1; } }
+        .copied { background: #22c55e !important; }
+    </style>
+</head>
+<body>
+<nav>
+    <div class="logo">Shop<span>Fiche</span></div>
+    <a href="/" class="nav-back">← Accueil</a>
+    <span style="font-size:0.75rem;color:var(--muted);padding:0.3rem 0.8rem;border:1px solid var(--border);border-radius:100px;">Beta gratuite</span>
+</nav>
+
+<div class="container">
+    <h1>Generez votre <span>fiche produit</span></h1>
+    <p class="subtitle">Entrez les infos de votre produit, choisissez vos mots-cles SEO, et laissez l'IA ecrire une description qui vend.</p>
+    
+    <div class="grid">
+        <div class="panel">
+            <div class="panel-title">● ● ● &nbsp;&nbsp; Votre produit</div>
+            
+            <div class="field">
+                <label>Nom du produit</label>
+                <input type="text" id="productName" placeholder="Ex: Montre Connectee Sport X200">
+            </div>
+            
+            <div class="field">
+                <label>Caracteristiques principales</label>
+                <textarea id="features" placeholder="Ex: Bluetooth 5.3, Etanche IP68, Suivi cardiaque, Batterie 7 jours..."></textarea>
+            </div>
+            
+            <div class="field">
+                <label>Mots-cles SEO cibles</label>
+                <div class="keywords-container" id="keywordTags"></div>
+                <div class="keyword-input-row">
+                    <input type="text" id="keywordInput" placeholder="Tapez un mot-cle et appuyez sur Entree">
+                    <button class="btn-add" onclick="addKeyword()">+ Ajouter</button>
+                </div>
+                <div class="suggestions" id="suggestions"></div>
+            </div>
+            
+            <div class="field">
+                <label>Ton de la description</label>
+                <div class="tone-row">
+                    <button class="tone-btn active" onclick="setTone(this, 'professionnel')">Professionnel</button>
+                    <button class="tone-btn" onclick="setTone(this, 'enthousiaste')">Enthousiaste</button>
+                    <button class="tone-btn" onclick="setTone(this, 'luxe')">Luxe</button>
+                    <button class="tone-btn" onclick="setTone(this, 'decontracte')">Decontracte</button>
+                </div>
+            </div>
+            
+            <button class="btn-generate" id="generateBtn" onclick="generate()">Generer la description</button>
+        </div>
+        
+        <div class="panel">
+            <div class="panel-title">● ● ● &nbsp;&nbsp; Description generee</div>
+            <div id="resultArea" class="result-area">
+                <div class="empty-state">
+                    <div class="empty-icon">✏️</div>
+                    <p>Votre description apparaitra ici</p>
+                    <p style="font-size:0.8rem;margin-top:0.5rem;">Remplissez le formulaire et cliquez sur generer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let keywords = [];
+let tone = 'professionnel';
+let currentDescription = '';
+let currentMeta = '';
+
+const suggestionsMap = {
+    'lampe': ['lampe led', 'eclairage bureau', 'lampe de bureau'],
+    'montre': ['montre connectee', 'montre sport', 'smartwatch'],
+    'chaussure': ['chaussures sport', 'basket homme', 'running'],
+    'sac': ['sac a dos', 'sac femme', 'maroquinerie'],
+    'casque': ['casque bluetooth', 'casque sans fil', 'ecouteurs'],
+};
+
+document.getElementById('keywordInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); addKeyword(); }
+});
+
+document.getElementById('productName').addEventListener('input', function() {
+    const val = this.value.toLowerCase();
+    const sugg = document.getElementById('suggestions');
+    sugg.innerHTML = '';
+    for (const [key, chips] of Object.entries(suggestionsMap)) {
+        if (val.includes(key)) {
+            chips.forEach(c => {
+                const el = document.createElement('span');
+                el.className = 'suggestion-chip';
+                el.textContent = c;
+                el.onclick = () => { keywords.push(c); renderTags(); el.remove(); };
+                sugg.appendChild(el);
+            });
+            break;
+        }
+    }
+});
+
+function addKeyword() {
+    const input = document.getElementById('keywordInput');
+    const val = input.value.trim();
+    if (val && !keywords.includes(val)) { keywords.push(val); renderTags(); }
+    input.value = '';
+}
+
+function renderTags() {
+    const container = document.getElementById('keywordTags');
+    container.innerHTML = '';
+    keywords.forEach((kw, i) => {
+        const tag = document.createElement('span');
+        tag.className = 'keyword-tag';
+        tag.innerHTML = `${kw} <button onclick="removeKeyword(${i})">×</button>`;
+        container.appendChild(tag);
+    });
+}
+
+function removeKeyword(i) { keywords.splice(i, 1); renderTags(); }
+
+function setTone(btn, t) {
+    document.querySelectorAll('.tone-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    tone = t;
+}
+
+async function generate() {
+    const name = document.getElementById('productName').value.trim();
+    const features = document.getElementById('features').value.trim();
+    if (!name) { alert('Veuillez entrer le nom du produit'); return; }
+
+    const btn = document.getElementById('generateBtn');
+    btn.disabled = true;
+    btn.innerHTML = 'Generation en cours <span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>';
+
+    document.getElementById('resultArea').innerHTML = `
+        <div class="word-count">Generation en cours...</div>
+        <div class="description-text" id="streamText"></div>
+    `;
+
+    try {
+        const prompt = `Tu es un expert en copywriting e-commerce francophone specialise dans le SEO Google.fr.
+
+Genere une fiche produit Shopify complete en francais pour :
+Produit : ${name}
+Caracteristiques : ${features || 'Non specifiees'}
+Mots-cles SEO a integrer naturellement : ${keywords.length > 0 ? keywords.join(', ') : 'aucun specifie'}
+Ton : ${tone}
+
+La fiche doit contenir :
+1. DESCRIPTION (150-200 mots) : Description engageante et naturelle avec les mots-cles integres organiquement. Commence directement par la description, sans titre.
+2. META TITLE (60 caracteres max) : Optimise pour Google.fr
+3. META DESCRIPTION (155 caracteres max) : Incitative au clic
+
+Format de reponse EXACT :
+DESCRIPTION:
+[texte de la description]
+
+META_TITLE:
+[meta title]
+
+META_DESCRIPTION:
+[meta description]`;
+
+        const response = await fetch('/api/generate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt })
+        });
+
+        if (!response.ok) throw new Error('Erreur serveur');
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let fullText = '';
+
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            const chunk = decoder.decode(value);
+            const lines = chunk.split('\n');
+            for (const line of lines) {
+                if (line.startsWith('data: ')) {
+                    const data = line.slice(6);
+                    if (data === '[DONE]') continue;
+                    try {
+                        const parsed = JSON.parse(data);
+                        const content = parsed.choices?.[0]?.delta?.content || '';
+                        fullText += content;
+                        renderResult(fullText);
+                    } catch(e) {}
+                }
+            }
+        }
+        currentDescription = fullText;
+        renderFinalResult(fullText);
+    } catch (error) {
+        document.getElementById('resultArea').innerHTML = `
+            <div style="color:#e53e3e;padding:1rem;background:#fff5f5;border-radius:10px;">
+                Erreur de generation. Verifiez la configuration du serveur.
+            </div>`;
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = 'Generer la description';
+    }
+}
+
+function renderResult(text) {
+    const streamEl = document.getElementById('streamText');
+    if (streamEl) streamEl.textContent = text;
+    const wordCount = text.split(/\s+/).filter(w => w).length;
+    const wc = document.querySelector('.word-count');
+    if (wc) wc.textContent = wordCount + ' mots';
+}
+
+function renderFinalResult(text) {
+    const descMatch = text.match(/DESCRIPTION:\n([\s\S]*?)(?=META_TITLE:|$)/);
+    const titleMatch = text.match(/META_TITLE:\n([\s\S]*?)(?=META_DESCRIPTION:|$)/);
+    const descMetaMatch = text.match(/META_DESCRIPTION:\n([\s\S]*?)$/);
+
+    const description = descMatch ? descMatch[1].trim() : text;
+    const metaTitle = titleMatch ? titleMatch[1].trim() : '';
+    const metaDesc = descMetaMatch ? descMetaMatch[1].trim() : '';
+    currentMeta = `META TITLE: ${metaTitle}\nMETA DESCRIPTION: ${metaDesc}`;
+
+    let highlighted = description;
+    keywords.forEach(kw => {
+        const regex = new RegExp(`(${kw})`, 'gi');
+        highlighted = highlighted.replace(regex, '<span class="highlight">$1</span>');
+    });
+
+    const wordCount = description.split(/\s+/).filter(w => w).length;
+
+    document.getElementById('resultArea').innerHTML = `
+        <div class="word-count">${wordCount} mots</div>
+        <div class="description-text">${highlighted}</div>
+        ${metaTitle ? `
+        <div class="meta-section">
+            <div class="meta-label">Meta Title</div>
+            <div class="meta-text">${metaTitle}</div>
+        </div>` : ''}
+        ${metaDesc ? `
+        <div class="meta-section">
+            <div class="meta-label">Meta Description</div>
+            <div class="meta-text">${metaDesc}</div>
+        </div>` : ''}
+        <div class="btn-row">
+            <button class="btn-copy" id="copyBtn" onclick="copyText()">Copier le texte</button>
+            <button class="btn-regen" onclick="generate()">Regenerer</button>
+        </div>
+    `;
+}
+
+function copyText() {
+    const text = currentDescription + '\n\n' + currentMeta;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyBtn');
+        if (btn) { btn.textContent = '✓ Copie !'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = 'Copier le texte'; btn.classList.remove('copied'); }, 2000); }
+    });
+}
+</script>
+</body>
+</html>
