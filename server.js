@@ -21,35 +21,11 @@ app.post('/api/generate', (req, res) => {
     const { prompt } = req.body;
     if (!prompt) return res.status(400).json({ error: 'Prompt requis' });
 
-    const systemPrompt = `Tu es un expert SEO e-commerce spécialisé en dropshipping francophone. Tu génères des fiches produits professionnelles, sans fautes, sans mots coupés.
-
-RÈGLES ABSOLUES :
-- N'abrège JAMAIS un mot, écris chaque phrase jusqu'au bout
-- Vérifie que chaque phrase est grammaticalement complète avant de passer à la suivante
-- Le META_TITLE doit faire entre 50 et 60 caractères, jamais coupé
-- La META_DESCRIPTION doit faire entre 140 et 160 caractères, jamais coupée
-
-Réponds TOUJOURS dans ce format exact, sans rien d'autre :
-
-DESCRIPTION:
-[description produit de 150 à 200 mots, persuasive, SEO-optimisée, sans fautes]
-
-META_TITLE:
-[titre SEO entre 50 et 60 caractères, jamais coupé]
-
-META_DESCRIPTION:
-[description meta entre 140 et 160 caractères, jamais coupée]`;
-
-    const messages = [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: prompt }
-    ];
-
     const body = JSON.stringify({
         model: 'gpt-4o-mini',
         max_tokens: 2000,
-        stream: true,
-        messages: messages
+        stream: false,
+        messages: [{ role: 'user', content: prompt }]
     });
 
     const options = {
@@ -63,13 +39,22 @@ META_DESCRIPTION:
         }
     };
 
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('Connection', 'keep-alive');
-
+    let rawData = '';
     const apiReq = https.request(options, (apiRes) => {
-        apiRes.on('data', chunk => res.write(chunk));
-        apiRes.on('end', () => { res.write('data: [DONE]\n\n'); res.end(); });
+        apiRes.on('data', chunk => { rawData += chunk; });
+        apiRes.on('end', () => {
+            try {
+                const parsed = JSON.parse(rawData);
+                const content = parsed.choices?.[0]?.message?.content || '';
+                res.setHeader('Content-Type', 'text/event-stream');
+                res.setHeader('Cache-Control', 'no-cache');
+                res.write('data: ' + JSON.stringify({ choices: [{ delta: { content } }] }) + '\n\n');
+                res.write('data: [DONE]\n\n');
+                res.end();
+            } catch(e) {
+                res.status(500).json({ error: 'Erreur parsing reponse OpenAI' });
+            }
+        });
     });
 
     apiReq.on('error', (err) => {
