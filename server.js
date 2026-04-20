@@ -22,7 +22,7 @@ app.post('/api/generate', (req, res) => {
     if (!prompt) return res.status(400).json({ error: 'Prompt requis' });
 
     const body = JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'gpt-4o',
         max_tokens: 2000,
         stream: false,
         messages: [{ role: 'user', content: prompt }]
