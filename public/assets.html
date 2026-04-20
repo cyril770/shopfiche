@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>ShopFiche - Visuels</title>
+<style>
+body{font-family:Arial,sans-serif;background:#0f2340;color:white;padding:2rem;text-align:center}
+h1{font-size:1.5rem;margin-bottom:0.5rem}
+.sub{color:rgba(255,255,255,0.6);margin-bottom:2rem;font-size:0.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:960px;margin:0 auto}
+.card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:1.5rem}
+canvas{max-width:100%;border-radius:8px;display:block;margin:0 auto 1rem}
+h3{font-size:0.9rem;margin-bottom:0.3rem}
+.dim{font-size:0.75rem;color:rgba(255,255,255,0.4);margin-bottom:1rem}
+.btn{display:block;padding:0.75rem;background:#22c55e;color:#0f2340;border:none;border-radius:8px;font-weight:700;font-size:0.9rem;cursor:pointer;width:100%}
+</style>
+</head>
+<body>
+<h1>Visuels ShopFiche</h1>
+<p class="sub">Cliquez Telecharger pour sauvegarder chaque image en PNG</p>
+<div class="grid">
+  <div class="card">
+    <canvas id="c1" width="400" height="400"></canvas>
+    <h3>Logo carre</h3>
+    <p class="dim">400x400px - Photo de profil Facebook</p>
+    <button class="btn" onclick="dl('c1','shopfiche-logo-profil.png')">Telecharger</button>
+  </div>
+  <div class="card">
+    <canvas id="c2" width="520" height="140"></canvas>
+    <h3>Logo horizontal</h3>
+    <p class="dim">520x140px - Site et emails</p>
+    <button class="btn" onclick="dl('c2','shopfiche-logo-horizontal.png')">Telecharger</button>
+  </div>
+  <div class="card">
+    <canvas id="c3" width="820" height="312"></canvas>
+    <h3>Banniere Facebook</h3>
+    <p class="dim">820x312px - Photo de couverture</p>
+    <button class="btn" onclick="dl('c3','shopfiche-banniere.png')">Telecharger</button>
+  </div>
+</div>
+<script>
+function rr(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();}
+window.onload=()=>{
+  // Logo carre
+  const c1=document.getElementById('c1'),x1=c1.getContext('2d');
+  x1.fillStyle='#1e3a5f';rr(x1,0,0,400,400,48);x1.fill();
+  x1.fillStyle='white';x1.font='bold 200px Arial Black,Arial';x1.textAlign='center';x1.textBaseline='middle';x1.fillText('S',155,215);
+  x1.fillStyle='#22c55e';x1.beginPath();x1.arc(288,78,42,0,Math.PI*2);x1.fill();
+  // Logo horiz
+  const c2=document.getElementById('c2'),x2=c2.getContext('2d');
+  x2.fillStyle='#1e3a5f';rr(x2,0,0,520,140,18);x2.fill();
+  x2.fillStyle='rgba(255,255,255,0.1)';rr(x2,14,14,100,112,14);x2.fill();
+  x2.fillStyle='white';x2.font='bold 72px Arial Black,Arial';x2.textAlign='center';x2.textBaseline='middle';x2.fillText('S',64,82);
+  x2.fillStyle='#22c55e';x2.beginPath();x2.arc(108,24,15,0,Math.PI*2);x2.fill();
+  x2.fillStyle='white';x2.font='bold 60px Arial Black,Arial';x2.textAlign='left';x2.fillText('Shop',130,90);
+  x2.fillStyle='#22c55e';x2.fillText('Fiche',322,90);
+  // Banniere
+  const c3=document.getElementById('c3'),x3=c3.getContext('2d');
+  x3.fillStyle='#1e3a5f';x3.fillRect(0,0,820,312);
+  x3.strokeStyle='rgba(255,255,255,0.04)';x3.lineWidth=1;
+  [78,156,234].forEach(y=>{x3.beginPath();x3.moveTo(0,y);x3.lineTo(820,y);x3.stroke();});
+  [205,410,615].forEach(xv=>{x3.beginPath();x3.moveTo(xv,0);x3.lineTo(xv,312);x3.stroke();});
+  x3.fillStyle='#22c55e';x3.fillRect(0,0,820,4);
+  x3.fillStyle='rgba(255,255,255,0.08)';rr(x3,50,90,62,62,12);x3.fill();
+  x3.fillStyle='white';x3.font='bold 42px Arial Black,Arial';x3.textAlign='center';x3.textBaseline='middle';x3.fillText('S',81,122);
+  x3.fillStyle='#22c55e';x3.beginPath();x3.arc(106,96,10,0,Math.PI*2);x3.fill();
+  x3.fillStyle='white';x3.font='bold 38px Arial Black,Arial';x3.textAlign='left';x3.fillText('Shop',126,130);
+  x3.fillStyle='#22c55e';x3.fillText('Fiche',310,130);
+  x3.fillStyle='rgba(255,255,255,0.45)';x3.font='14px Arial';x3.fillText('Fiches produits SEO pour Shopify en 10 secondes',126,162);
+  [['Import CSV',126,90],['Export Shopify',226,106],['5 langues',342,78]].forEach(([t,xv,ww])=>{
+    x3.fillStyle='rgba(255,255,255,0.07)';rr(x3,xv,182,ww,26,13);x3.fill();
+    x3.strokeStyle='rgba(255,255,255,0.12)';x3.stroke();
+    x3.fillStyle='rgba(255,255,255,0.65)';x3.font='11px Arial';x3.textAlign='center';
+    x3.fillText(t,xv+ww/2,200);
+  });
+  x3.fillStyle='#22c55e';rr(x3,126,220,160,38,8);x3.fill();
+  x3.fillStyle='#0f2340';x3.font='bold 14px Arial';x3.textAlign='center';x3.fillText('shopfiche.fr',206,244);
+  x3.strokeStyle='rgba(255,255,255,0.07)';x3.lineWidth=1;x3.beginPath();x3.moveTo(562,60);x3.lineTo(562,252);x3.stroke();
+  x3.fillStyle='white';x3.font='bold 48px Arial Black,Arial';x3.fillText('100',692,118);
+  x3.fillStyle='rgba(255,255,255,0.3)';x3.font='10px Arial';x3.fillText('PLACES FONDATEURS',692,140);
+  x3.strokeStyle='rgba(255,255,255,0.07)';x3.beginPath();x3.moveTo(622,155);x3.lineTo(762,155);x3.stroke();
+  x3.fillStyle='#22c55e';x3.font='bold 48px Arial Black,Arial';x3.fillText('9€',692,198);
+  x3.fillStyle='rgba(255,255,255,0.3)';x3.font='10px Arial';x3.fillText('/MOIS A VIE',692,218);
+  x3.fillStyle='rgba(34,197,94,0.12)';rr(x3,634,233,116,22,11);x3.fill();
+  x3.strokeStyle='rgba(34,197,94,0.25)';x3.stroke();
+  x3.fillStyle='#22c55e';x3.font='bold 10px Arial';x3.fillText('au lieu de 29€ (-69%)',692,248);
+};
+function dl(id,fn){const a=document.createElement('a');a.href=document.getElementById(id).toDataURL('image/png',1);a.download=fn;a.click();}
+</script>
+</body>
+</html>
