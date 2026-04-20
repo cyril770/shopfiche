@@ -9,12 +9,11 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/health', (req, res) => res.json({ status: 'healthy' }));
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
-
 app.post('/api/generate', (req, res) => {
     const { prompt } = req.body;
     if (!prompt) return res.status(400).json({ error: 'Prompt requis' });
     const body = JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'gpt-4o',
         max_tokens: 4000,
         stream: false,
         messages: [{ role: 'user', content: prompt }]
@@ -23,11 +22,7 @@ app.post('/api/generate', (req, res) => {
         hostname: 'api.openai.com',
         path: '/v1/chat/completions',
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${OPENAI_API_KEY}`,
-            'Content-Length': Buffer.byteLength(body)
-        }
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${OPENAI_API_KEY}`, 'Content-Length': Buffer.byteLength(body) }
     };
     let rawData = '';
     const apiReq = https.request(options, (apiRes) => {
@@ -44,7 +39,7 @@ app.post('/api/generate', (req, res) => {
             } catch(e) { res.status(500).json({ error: 'Erreur parsing' }); }
         });
     });
-    apiReq.on('error', (err) => res.status(500).json({ error: 'Erreur API' }));
+    apiReq.on('error', () => res.status(500).json({ error: 'Erreur API' }));
     apiReq.write(body);
     apiReq.end();
 });
