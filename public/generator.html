@@ -29,92 +29,38 @@
         .subtitle { color: var(--muted); margin-bottom: 2.5rem; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
         @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
-        .panel {
-            background: white; border: 1px solid var(--border);
-            border-radius: 16px; padding: 1.5rem;
-        }
-        .panel-title {
-            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
-            color: var(--muted); text-transform: uppercase; margin-bottom: 1.2rem;
-            padding-bottom: 1rem; border-bottom: 1px solid var(--border);
-        }
+        .panel { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; }
+        .panel-title { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-bottom: 1.2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
         .field { margin-bottom: 1.2rem; }
         label { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
-        input[type="text"], textarea {
-            width: 100%; padding: 0.75rem 1rem;
-            border: 1px solid var(--border); border-radius: 10px;
-            font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-            background: var(--paper); color: var(--ink);
-            transition: border-color 0.2s;
-        }
-        input[type="text"]:focus, textarea:focus {
-            outline: none; border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(26,92,255,0.08);
-        }
+        input[type="text"], textarea { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; background: var(--paper); color: var(--ink); transition: border-color 0.2s; }
+        input[type="text"]:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(26,92,255,0.08); }
         textarea { resize: vertical; min-height: 100px; }
         .keywords-container { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.5rem; }
-        .keyword-tag {
-            display: inline-flex; align-items: center; gap: 0.3rem;
-            background: var(--accent-light); color: var(--accent);
-            font-size: 0.8rem; font-weight: 500; padding: 0.3rem 0.7rem;
-            border-radius: 100px;
-        }
-        .keyword-tag button {
-            background: none; border: none; cursor: pointer;
-            color: var(--accent); font-size: 1rem; line-height: 1; padding: 0;
-        }
+        .keyword-tag { display: inline-flex; align-items: center; gap: 0.3rem; background: var(--accent-light); color: var(--accent); font-size: 0.8rem; font-weight: 500; padding: 0.3rem 0.7rem; border-radius: 100px; }
+        .keyword-tag button { background: none; border: none; cursor: pointer; color: var(--accent); font-size: 1rem; line-height: 1; padding: 0; }
         .keyword-input-row { display: flex; gap: 0.5rem; }
         .keyword-input-row input { flex: 1; }
-        .btn-add {
-            padding: 0.75rem 1rem; background: var(--accent-light);
-            color: var(--accent); border: none; border-radius: 10px;
-            font-weight: 600; cursor: pointer; white-space: nowrap; font-size: 0.85rem;
-        }
+        .btn-add { padding: 0.75rem 1rem; background: var(--accent-light); color: var(--accent); border: none; border-radius: 10px; font-weight: 600; cursor: pointer; white-space: nowrap; font-size: 0.85rem; }
         .suggestions { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
-        .suggestion-chip {
-            font-size: 0.75rem; padding: 0.25rem 0.6rem;
-            border: 1px solid var(--border); border-radius: 100px;
-            cursor: pointer; color: var(--muted); background: white;
-            transition: all 0.15s;
-        }
+        .suggestion-chip { font-size: 0.75rem; padding: 0.25rem 0.6rem; border: 1px solid var(--border); border-radius: 100px; cursor: pointer; color: var(--muted); background: white; transition: all 0.15s; }
         .suggestion-chip:hover { border-color: var(--accent); color: var(--accent); }
         .tone-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .tone-btn {
-            padding: 0.5rem 1rem; border: 1px solid var(--border);
-            border-radius: 100px; background: white; cursor: pointer;
-            font-size: 0.85rem; font-family: 'DM Sans', sans-serif;
-            transition: all 0.15s;
-        }
+        .tone-btn { padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 100px; background: white; cursor: pointer; font-size: 0.85rem; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
         .tone-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
-        .btn-generate {
-            width: 100%; padding: 1rem; background: var(--accent); color: white;
-            border: none; border-radius: 12px; font-size: 1rem; font-weight: 600;
-            cursor: pointer; margin-top: 1.5rem; font-family: 'DM Sans', sans-serif;
-            transition: opacity 0.2s; letter-spacing: -0.01em;
-        }
+        .btn-generate { width: 100%; padding: 1rem; background: var(--accent); color: white; border: none; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 1.5rem; font-family: 'DM Sans', sans-serif; transition: opacity 0.2s; letter-spacing: -0.01em; }
         .btn-generate:hover { opacity: 0.9; }
         .btn-generate:disabled { opacity: 0.5; cursor: not-allowed; }
         .result-area { min-height: 200px; }
         .word-count { font-size: 0.75rem; color: var(--muted); margin-bottom: 1rem; }
-        .description-text {
-            font-size: 0.95rem; line-height: 1.7; color: var(--ink);
-            white-space: pre-wrap;
-        }
+        .description-text { font-size: 0.95rem; line-height: 1.7; color: var(--ink); white-space: pre-wrap; }
         .description-text .highlight { background: var(--accent-light); color: var(--accent); border-radius: 3px; padding: 0 2px; }
         .meta-section { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
         .meta-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.5rem; }
         .meta-text { font-size: 0.85rem; color: var(--ink); line-height: 1.5; }
         .btn-row { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
-        .btn-copy {
-            flex: 1; padding: 0.75rem; background: var(--accent); color: white;
-            border: none; border-radius: 10px; cursor: pointer;
-            font-weight: 600; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-        }
-        .btn-regen {
-            flex: 1; padding: 0.75rem; background: white; color: var(--ink);
-            border: 1px solid var(--border); border-radius: 10px; cursor: pointer;
-            font-weight: 600; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-        }
+        .btn-copy { flex: 1; padding: 0.75rem; background: var(--accent); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; }
+        .btn-regen { flex: 1; padding: 0.75rem; background: white; color: var(--ink); border: 1px solid var(--border); border-radius: 10px; cursor: pointer; font-weight: 600; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; }
         .empty-state { text-align: center; padding: 3rem 1rem; color: var(--muted); }
         .empty-icon { font-size: 2rem; margin-bottom: 1rem; }
         .loading-dots span { animation: blink 1.4s infinite; display: inline-block; }
@@ -134,21 +80,21 @@
 <div class="container">
     <h1>Generez votre <span>fiche produit</span></h1>
     <p class="subtitle">Entrez les infos de votre produit, choisissez vos mots-cles SEO, et laissez l'IA ecrire une description qui vend.</p>
-    
+
     <div class="grid">
         <div class="panel">
             <div class="panel-title">● ● ● &nbsp;&nbsp; Votre produit</div>
-            
+
             <div class="field">
                 <label>Nom du produit</label>
                 <input type="text" id="productName" placeholder="Ex: Montre Connectee Sport X200">
             </div>
-            
+
             <div class="field">
                 <label>Caracteristiques principales</label>
                 <textarea id="features" placeholder="Ex: Bluetooth 5.3, Etanche IP68, Suivi cardiaque, Batterie 7 jours..."></textarea>
             </div>
-            
+
             <div class="field">
                 <label>Mots-cles SEO cibles</label>
                 <div class="keywords-container" id="keywordTags"></div>
@@ -158,7 +104,7 @@
                 </div>
                 <div class="suggestions" id="suggestions"></div>
             </div>
-            
+
             <div class="field">
                 <label>Ton de la description</label>
                 <div class="tone-row">
@@ -168,10 +114,10 @@
                     <button class="tone-btn" onclick="setTone(this, 'decontracte')">Decontracte</button>
                 </div>
             </div>
-            
+
             <button class="btn-generate" id="generateBtn" onclick="generate()">Generer la description</button>
         </div>
-        
+
         <div class="panel">
             <div class="panel-title">● ● ● &nbsp;&nbsp; Description generee</div>
             <div id="resultArea" class="result-area">
@@ -262,28 +208,25 @@ async function generate() {
     `;
 
     try {
-        const prompt = `Tu es un expert en copywriting e-commerce francophone specialise dans le SEO Google.fr.
+        const prompt = `Tu es un redacteur SEO expert. Ecris une fiche produit en francais pour Shopify.
 
-Genere une fiche produit Shopify complete en francais pour :
+CONSIGNE ABSOLUE : chaque mot doit etre ecrit en entier, aucune phrase ne doit etre coupee, chaque phrase se termine par un point.
+
 Produit : ${name}
 Caracteristiques : ${features || 'Non specifiees'}
-Mots-cles SEO a integrer naturellement : ${keywords.length > 0 ? keywords.join(', ') : 'aucun specifie'}
-Ton : ${tone}
+Mots-cles SEO : ${keywords.length > 0 ? keywords.join(', ') : 'aucun specifie'}
+Ton souhaite : ${tone}
 
-La fiche doit contenir :
-1. DESCRIPTION (150-200 mots) : Description engageante et naturelle avec les mots-cles integres organiquement. Commence directement par la description, sans titre.
-2. META TITLE (60 caracteres max) : Optimise pour Google.fr
-3. META DESCRIPTION (155 caracteres max) : Incitative au clic
+Reponds UNIQUEMENT avec ce format, sans aucun texte avant ou apres :
 
-Format de reponse EXACT :
 DESCRIPTION:
-[texte de la description]
+[Entre 160 et 200 mots. Phrases completes. Mots-cles integres naturellement. Accrocheur et persuasif.]
 
 META_TITLE:
-[meta title]
+[Entre 50 et 60 caracteres. Jamais coupe. Inclut le mot-cle principal.]
 
 META_DESCRIPTION:
-[meta description]`;
+[Entre 140 et 160 caracteres. Jamais coupee. Incite au clic.]`;
 
         const response = await fetch('/api/generate', {
             method: 'POST',
@@ -296,15 +239,17 @@ META_DESCRIPTION:
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
         let fullText = '';
+        let buffer = '';
 
         while (true) {
             const { done, value } = await reader.read();
             if (done) break;
-            const chunk = decoder.decode(value);
-            const lines = chunk.split('\n');
+            buffer += decoder.decode(value, { stream: true });
+            const lines = buffer.split('\n');
+            buffer = lines.pop();
             for (const line of lines) {
                 if (line.startsWith('data: ')) {
-                    const data = line.slice(6);
+                    const data = line.slice(6).trim();
                     if (data === '[DONE]') continue;
                     try {
                         const parsed = JSON.parse(data);
