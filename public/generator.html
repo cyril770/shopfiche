@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShopFiche — Generateur de fiches produits SEO Shopify</title>
+<title>ShopFiche - Generateur de fiches produits SEO</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--ink:#0a0a0a;--paper:#fafaf8;--accent:#1a5cff;--accent-light:#e8efff;--muted:#6b6b6b;--border:#e2e2e0;--green:#22c55e;--green-light:#dcfce7}
+:root{--ink:#0a0a0a;--paper:#fafaf8;--accent:#1a5cff;--navy:#1e3a5f;--green:#22c55e;--muted:#6b6b6b;--border:#e2e2e0;--al:#e8efff}
 body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink)}
-nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(250,250,248,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:-0.03em}.logo span{color:var(--accent)}
+nav{position:fixed;top:0;width:100%;z-index:100;padding:1.2rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(250,250,248,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:-0.03em;display:flex;align-items:center;gap:10px}.logo-icon{width:34px;height:34px;background:#1e3a5f;border-radius:9px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}.logo-s{font-size:20px;font-weight:900;color:white;font-family:'Arial Black',Arial,sans-serif;line-height:1}.logo-dot{position:absolute;top:-4px;right:-4px;width:11px;height:11px;background:#22c55e;border-radius:50%;border:2px solid white}.logo-text .f{color:#22c55e}
 .nav-back{font-size:0.85rem;color:var(--muted);text-decoration:none}.nav-back:hover{color:var(--ink)}
-.container{max-width:1200px;margin:0 auto;padding:6rem 2rem 4rem}
+.container{max-width:1100px;margin:0 auto;padding:7rem 2rem 4rem}
 h1{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:0.4rem}
 h1 span{color:var(--accent)}.subtitle{color:var(--muted);margin-bottom:1.5rem;font-size:0.95rem}
 .tabs{display:flex;gap:0.5rem;margin-bottom:1.5rem;border-bottom:1px solid var(--border);padding-bottom:0}
-.tab-btn{padding:0.6rem 1.2rem;border:none;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.15s}
+.tab-btn{padding:0.6rem 1.2rem;border:none;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px}
 .tab-btn.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:500}
 .tab-content{display:none}.tab-content.active{display:block}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
@@ -29,38 +29,36 @@ input[type=text],textarea,select{width:100%;padding:0.7rem 1rem;border:1px solid
 input[type=text]:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(26,92,255,0.08)}
 textarea{resize:vertical;min-height:90px}
 .keywords-container{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.5rem}
-.keyword-tag{display:inline-flex;align-items:center;gap:0.3rem;background:var(--accent-light);color:var(--accent);font-size:0.8rem;font-weight:500;padding:0.25rem 0.6rem;border-radius:100px}
+.keyword-tag{display:inline-flex;align-items:center;gap:0.3rem;background:var(--al);color:var(--accent);font-size:0.8rem;font-weight:500;padding:0.25rem 0.6rem;border-radius:100px}
 .keyword-tag button{background:none;border:none;cursor:pointer;color:var(--accent);font-size:1rem;line-height:1;padding:0}
 .keyword-input-row{display:flex;gap:0.5rem}.keyword-input-row input{flex:1}
-.btn-add{padding:0.7rem 1rem;background:var(--accent-light);color:var(--accent);border:none;border-radius:10px;font-weight:600;cursor:pointer;white-space:nowrap;font-size:0.85rem}
+.btn-add{padding:0.7rem 1rem;background:var(--al);color:var(--accent);border:none;border-radius:10px;font-weight:600;cursor:pointer;white-space:nowrap;font-size:0.85rem}
 .suggestions{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.5rem}
 .suggestion-chip{font-size:0.75rem;padding:0.25rem 0.6rem;border:1px solid var(--border);border-radius:100px;cursor:pointer;color:var(--muted);background:white}
 .suggestion-chip:hover{border-color:var(--accent);color:var(--accent)}
-.tone-row{display:flex;gap:0.5rem;flex-wrap:wrap}
-.tone-btn{padding:0.4rem 0.9rem;border:1px solid var(--border);border-radius:100px;background:white;cursor:pointer;font-size:0.85rem;font-family:'DM Sans',sans-serif}
-.tone-btn.active{background:var(--accent);color:white;border-color:var(--accent)}
-.lang-row{display:flex;gap:0.4rem;flex-wrap:wrap}
-.lang-btn{padding:0.4rem 0.8rem;border:1px solid var(--border);border-radius:8px;background:white;cursor:pointer;font-size:0.8rem;font-family:'DM Sans',sans-serif}
-.lang-btn.active{background:var(--accent);color:white;border-color:var(--accent)}
+.tone-row,.lang-row{display:flex;gap:0.4rem;flex-wrap:wrap}
+.tone-btn,.lang-btn{padding:0.4rem 0.9rem;border:1px solid var(--border);border-radius:100px;background:white;cursor:pointer;font-size:0.85rem;font-family:'DM Sans',sans-serif}
+.tone-btn.active,.lang-btn.active{background:var(--accent);color:white;border-color:var(--accent)}
 .btn-generate{width:100%;padding:1rem;background:var(--accent);color:white;border:none;border-radius:12px;font-size:1rem;font-weight:600;cursor:pointer;margin-top:1rem;font-family:'DM Sans',sans-serif}
 .btn-generate:hover{opacity:0.9}.btn-generate:disabled{opacity:0.5;cursor:not-allowed}
 .result-area{min-height:200px}
 .word-count{font-size:0.75rem;color:var(--muted);margin-bottom:0.8rem}
 .description-text{font-size:0.95rem;line-height:1.7;color:var(--ink);white-space:pre-wrap}
-.highlight{background:var(--accent-light);color:var(--accent);border-radius:3px;padding:0 2px}
+.highlight{background:var(--al);color:var(--accent);border-radius:3px;padding:0 2px}
 .meta-section{margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border)}
 .meta-label{font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:0.4rem}
 .meta-text{font-size:0.85rem;color:var(--ink);line-height:1.5}
 .seo-score{margin-top:1.2rem;padding:1rem;background:var(--paper);border-radius:12px;border:1px solid var(--border)}
 .score-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.8rem}
-.score-number{font-size:1.8rem;font-weight:700}.score-good{color:#22c55e}.score-avg{color:#f59e0b}.score-bad{color:#ef4444}
+.score-number{font-size:1.8rem;font-weight:700}
+.score-good{color:#16a34a}.score-avg{color:#f59e0b}.score-bad{color:#ef4444}
 .score-bar-wrap{height:6px;background:#e5e7eb;border-radius:3px;margin-bottom:0.6rem}
-.score-bar{height:6px;border-radius:3px;transition:width 0.5s}
+.score-bar{height:6px;border-radius:3px}
 .score-item{font-size:0.8rem;color:var(--muted);display:flex;align-items:center;gap:0.4rem;margin-bottom:0.3rem}
 .score-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .btn-row{display:flex;gap:0.6rem;margin-top:1rem;flex-wrap:wrap}
-.btn-copy{flex:1;padding:0.7rem;background:var(--accent);color:white;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.85rem;white-space:nowrap}
-.btn-export{flex:1;padding:0.7rem;background:#22c55e;color:white;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.85rem;white-space:nowrap}
+.btn-copy{flex:1;padding:0.7rem;background:var(--accent);color:white;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.85rem}
+.btn-export{flex:1;padding:0.7rem;background:#16a34a;color:white;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.85rem}
 .btn-regen{flex:1;padding:0.7rem;background:white;color:var(--ink);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.85rem}
 .empty-state{text-align:center;padding:3rem 1rem;color:var(--muted)}
 .empty-icon{font-size:2rem;margin-bottom:1rem}
@@ -69,8 +67,8 @@ textarea{resize:vertical;min-height:90px}
 .loading-dots span:nth-child(3){animation-delay:0.4s}
 @keyframes blink{0%,80%,100%{opacity:0}40%{opacity:1}}
 .copied{background:#22c55e!important}
-.csv-zone{border:2px dashed var(--border);border-radius:12px;padding:2rem;text-align:center;cursor:pointer;transition:all 0.2s;margin-bottom:1rem}
-.csv-zone:hover,.csv-zone.dragover{border-color:var(--accent);background:var(--accent-light)}
+.csv-zone{border:2px dashed var(--border);border-radius:12px;padding:2rem;text-align:center;cursor:pointer;margin-bottom:1rem}
+.csv-zone:hover,.csv-zone.dragover{border-color:var(--accent);background:var(--al)}
 .csv-zone p{color:var(--muted);font-size:0.9rem;margin-bottom:0.5rem}
 .csv-zone strong{color:var(--accent)}
 .csv-preview{max-height:200px;overflow-y:auto;border:1px solid var(--border);border-radius:8px;margin-bottom:1rem}
@@ -79,26 +77,26 @@ textarea{resize:vertical;min-height:90px}
 .csv-preview td{padding:0.4rem 0.5rem;border-bottom:1px solid var(--border)}
 .batch-progress{margin-bottom:1rem}
 .progress-bar-wrap{height:8px;background:#e5e7eb;border-radius:4px;margin:0.5rem 0}
-.progress-bar{height:8px;background:var(--accent);border-radius:4px;transition:width 0.3s}
+.progress-bar{height:8px;background:var(--accent);border-radius:4px}
 .batch-results{max-height:300px;overflow-y:auto}
 .batch-item{padding:0.8rem;border:1px solid var(--border);border-radius:8px;margin-bottom:0.5rem;font-size:0.85rem}
 .batch-item-name{font-weight:500;margin-bottom:0.3rem}
 .batch-item-desc{color:var(--muted);font-size:0.8rem;line-height:1.4}
 .status-pill{font-size:0.7rem;padding:2px 8px;border-radius:100px;float:right}
-.status-done{background:var(--green-light);color:#22c55e}
+.status-done{background:#dcfce7;color:#16a34a}
 .status-pending{background:#fef3c7;color:#92400e}
 .status-error{background:#fee2e2;color:#991b1b}
 </style>
 </head>
 <body>
 <nav>
-  <div class="logo" style="display:flex;align-items:center;gap:8px"><div style="width:32px;height:32px;background:#1e3a5f;border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0"><span style="font-size:18px;font-weight:900;color:white;font-family:Arial Black,Arial,sans-serif">S</span><div style="position:absolute;top:-3px;right:-3px;width:10px;height:10px;background:#22c55e;border-radius:50%"></div></div>Shop<span style="color:#22c55e" style="color:#22c55e">Fiche</span></div>
-  <a href="/" class="nav-back">â Accueil</a>
+  <div class="logo"><div class="logo-icon"><span class="logo-s">S</span><div class="logo-dot"></div></div><span class="logo-text">Shop<span class="f">Fiche</span></span></div>
+  <a href="/" class="nav-back">Accueil</a>
   <span style="font-size:0.75rem;color:var(--muted);padding:0.3rem 0.8rem;border:1px solid var(--border);border-radius:100px;">Beta gratuite</span>
 </nav>
 <div class="container">
   <h1>Generez vos <span>fiches produits</span></h1>
-  <p class="subtitle">Description SEO, Meta Title, Meta Description â prets a coller dans Shopify.</p>
+  <p class="subtitle">Description SEO, Meta Title, Meta Description - prets a coller dans Shopify.</p>
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('single')">Produit unique</button>
     <button class="tab-btn" onclick="switchTab('batch')">Import CSV en masse</button>
@@ -107,7 +105,7 @@ textarea{resize:vertical;min-height:90px}
   <div id="tab-single" class="tab-content active">
     <div class="grid">
       <div class="panel">
-        <div class="panel-title">â â â Votre produit</div>
+        <div class="panel-title">Votre produit</div>
         <div class="field"><label>Nom du produit</label><input type="text" id="productName" placeholder="Ex: Montre Connectee Sport X200"></div>
         <div class="field"><label>Caracteristiques</label><textarea id="features" placeholder="Ex: Bluetooth 5.3, Etanche IP68, Batterie 7 jours..."></textarea></div>
         <div class="field">
@@ -141,9 +139,9 @@ textarea{resize:vertical;min-height:90px}
         <button class="btn-generate" id="generateBtn" onclick="generate()">Generer la fiche</button>
       </div>
       <div class="panel">
-        <div class="panel-title">â â â Fiche generee</div>
+        <div class="panel-title">Fiche generee</div>
         <div id="resultArea" class="result-area">
-          <div class="empty-state"><div class="empty-icon">âï¸</div><p>Votre fiche apparaitra ici</p></div>
+          <div class="empty-state"><div class="empty-icon">&#9999;&#65039;</div><p>Votre fiche apparaitra ici</p></div>
         </div>
       </div>
     </div>
@@ -152,40 +150,32 @@ textarea{resize:vertical;min-height:90px}
   <div id="tab-batch" class="tab-content">
     <div class="grid">
       <div class="panel">
-        <div class="panel-title">â â â Import CSV</div>
+        <div class="panel-title">Import CSV</div>
         <div class="csv-zone" id="csvZone" onclick="document.getElementById('csvInput').click()" ondragover="event.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="handleDrop(event)">
           <p>Glissez votre fichier CSV ici</p>
           <p><strong>ou cliquez pour parcourir</strong></p>
-          <p style="font-size:0.75rem;margin-top:0.5rem;color:#9ca3af">Colonnes requises: nom, caracteristiques (optionnel: mots_cles)</p>
+          <p style="font-size:0.75rem;margin-top:0.5rem;color:#9ca3af">Colonnes: nom, caracteristiques (optionnel: mots_cles)</p>
         </div>
         <input type="file" id="csvInput" accept=".csv" style="display:none" onchange="loadCSV(this)">
         <div id="csvPreview"></div>
-        <div class="field">
-          <label>Ton pour toutes les fiches</label>
-          <select id="batchTone"><option value="professionnel">Professionnel</option><option value="enthousiaste">Enthousiaste</option><option value="luxe">Luxe</option><option value="decontracte">Decontracte</option></select>
-        </div>
-        <div class="field">
-          <label>Langue</label>
-          <select id="batchLang"><option value="fr">Francais</option><option value="en">English</option><option value="es">Espanol</option><option value="de">Deutsch</option><option value="it">Italiano</option></select>
-        </div>
+        <div class="field"><label>Ton</label><select id="batchTone"><option value="professionnel">Professionnel</option><option value="enthousiaste">Enthousiaste</option><option value="luxe">Luxe</option><option value="decontracte">Decontracte</option></select></div>
+        <div class="field"><label>Langue</label><select id="batchLang"><option value="fr">Francais</option><option value="en">English</option><option value="es">Espanol</option><option value="de">Deutsch</option><option value="it">Italiano</option></select></div>
         <button class="btn-generate" id="batchBtn" onclick="runBatch()" disabled>Generer toutes les fiches</button>
         <button class="btn-export" id="exportBtn" onclick="exportCSV()" style="width:100%;margin-top:0.5rem;padding:0.8rem;display:none">Exporter CSV Shopify</button>
-        <a id="csvTemplateLink" href="#" onclick="downloadTemplate(event)" style="display:block;text-align:center;font-size:0.8rem;color:var(--accent);margin-top:0.8rem">Telecharger le modele CSV</a>
+        <a href="#" onclick="downloadTemplate(event)" style="display:block;text-align:center;font-size:0.8rem;color:var(--accent);margin-top:0.8rem">Telecharger le modele CSV</a>
       </div>
       <div class="panel">
-        <div class="panel-title">â â â Resultats</div>
-        <div id="batchArea">
-          <div class="empty-state"><div class="empty-icon">ð¦</div><p>Importez un CSV pour commencer</p><p style="font-size:0.8rem;margin-top:0.5rem">Jusqu'a 100 produits en une fois</p></div>
-        </div>
+        <div class="panel-title">Resultats</div>
+        <div id="batchArea"><div class="empty-state"><div class="empty-icon">&#128230;</div><p>Importez un CSV pour commencer</p></div></div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-let keywords=[];let tone='professionnel';let lang='fr';let currentDescription='';let currentMeta='';let batchProducts=[];let batchResults=[];
+let keywords=[],tone='professionnel',lang='fr',currentDescription='',batchProducts=[],batchResults=[];
+const suggestionsMap={montre:['montre connectee','montre sport','smartwatch'],lampe:['lampe led','eclairage bureau'],casque:['casque bluetooth','casque sans fil'],sac:['sac a dos','sac femme']};
 const langNames={fr:'francais',en:'anglais',es:'espagnol',de:'allemand',it:'italien'};
-const suggestionsMap={lampe:['lampe led','eclairage bureau','lampe de bureau'],montre:['montre connectee','montre sport','smartwatch'],chaussure:['chaussures sport','basket homme','running'],sac:['sac a dos','sac femme','maroquinerie'],casque:['casque bluetooth','casque sans fil','ecouteurs']};
 
 function switchTab(t){document.querySelectorAll('.tab-btn').forEach((b,i)=>{b.classList.toggle('active',['single','batch'][i]===t)});document.querySelectorAll('.tab-content').forEach(c=>{c.classList.toggle('active',c.id==='tab-'+t)})}
 function setTone(btn,t){document.querySelectorAll('.tone-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');tone=t}
@@ -197,12 +187,11 @@ document.getElementById('productName').addEventListener('input',function(){
   for(const[key,chips]of Object.entries(suggestionsMap)){if(val.includes(key)){chips.forEach(c=>{const el=document.createElement('span');el.className='suggestion-chip';el.textContent=c;el.onclick=()=>{keywords.push(c);renderTags();el.remove()};sugg.appendChild(el)});break}}
 });
 function addKeyword(){const input=document.getElementById('keywordInput');const val=input.value.trim();if(val&&!keywords.includes(val)){keywords.push(val);renderTags()}input.value=''}
-function renderTags(){const container=document.getElementById('keywordTags');container.innerHTML='';keywords.forEach((kw,i)=>{const tag=document.createElement('span');tag.className='keyword-tag';tag.innerHTML=kw+' <button onclick="removeKeyword('+i+')">Ã</button>';container.appendChild(tag)})}
+function renderTags(){const container=document.getElementById('keywordTags');container.innerHTML='';keywords.forEach((kw,i)=>{const tag=document.createElement('span');tag.className='keyword-tag';tag.innerHTML=kw+' <button onclick="removeKeyword('+i+')">x</button>';container.appendChild(tag)})}
 function removeKeyword(i){keywords.splice(i,1);renderTags()}
 
 function buildPrompt(name,features,kws,t,l){
-  const langStr=langNames[l]||'francais';
-  return 'Tu es un expert SEO e-commerce. Ecris une fiche produit Shopify en '+langStr+' pour:\nProduit: '+name+'\nCaracteristiques: '+(features||'Non specifiees')+'\nMots-cles: '+(kws.length>0?kws.join(', '):'aucun')+'\nTon: '+t+'\n\nReponds UNIQUEMENT dans ce format exact:\n\nDESCRIPTION:\n[160 a 200 mots, phrases completes, persuasif, SEO optimise]\n\nMETA_TITLE:\n[50 a 60 caracteres]\n\nMETA_DESCRIPTION:\n[140 a 160 caracteres]';
+  return 'Tu es un expert SEO e-commerce. Ecris une fiche produit Shopify en '+langNames[l]+' pour:\nProduit: '+name+'\nCaracteristiques: '+(features||'Non specifiees')+'\nMots-cles: '+(kws.length>0?kws.join(', '):'aucun')+'\nTon: '+t+'\n\nReponds UNIQUEMENT dans ce format exact:\n\nDESCRIPTION:\n[160 a 200 mots, phrases completes, persuasif, SEO optimise]\n\nMETA_TITLE:\n[50 a 60 caracteres]\n\nMETA_DESCRIPTION:\n[140 a 160 caracteres]';
 }
 
 async function callAPI(prompt){
@@ -214,31 +203,21 @@ async function callAPI(prompt){
   return full;
 }
 
-function calcSEOScore(description,metaTitle,metaDesc,kws){
+function calcSEOScore(desc,title,meta,kws){
   let score=0;const tips=[];
-  const wc=description.split(/\s+/).filter(w=>w).length;
-  if(wc>=160){score+=25;tips.push({ok:true,text:'Description: '+wc+' mots (ideal 160-200)'})}
-  else{tips.push({ok:false,text:'Description trop courte: '+wc+' mots (minimum 160)'})}
-  if(metaTitle.length>=50&&metaTitle.length<=60){score+=25;tips.push({ok:true,text:'Meta Title: '+metaTitle.length+' caracteres (ideal 50-60)'})}
-  else{tips.push({ok:false,text:'Meta Title: '+metaTitle.length+' car. (ideal 50-60)'})}
-  if(metaDesc.length>=140&&metaDesc.length<=160){score+=25;tips.push({ok:true,text:'Meta Description: '+metaDesc.length+' car. (ideal 140-160)'})}
-  else{tips.push({ok:false,text:'Meta Description: '+metaDesc.length+' car. (ideal 140-160)'})}
-  if(kws.length>0){const descLow=description.toLowerCase();const found=kws.filter(k=>descLow.includes(k.toLowerCase()));if(found.length===kws.length){score+=25;tips.push({ok:true,text:'Tous les mots-cles integres'})}else{score+=Math.round(25*found.length/kws.length);tips.push({ok:false,text:found.length+'/'+kws.length+' mots-cles integres'})}}
-  else{score+=25;tips.push({ok:true,text:'Pas de mots-cles specifiques'})}
+  const wc=desc.split(/\s+/).filter(w=>w).length;
+  if(wc>=160){score+=25;tips.push({ok:true,text:'Description: '+wc+' mots (ideal 160-200)'})}else{tips.push({ok:false,text:'Description trop courte: '+wc+' mots'})}
+  if(title.length>=50&&title.length<=60){score+=25;tips.push({ok:true,text:'Meta Title: '+title.length+' car. (ideal 50-60)'})}else{tips.push({ok:false,text:'Meta Title: '+title.length+' car. (ideal 50-60)'})}
+  if(meta.length>=140&&meta.length<=160){score+=25;tips.push({ok:true,text:'Meta Description: '+meta.length+' car. (ideal 140-160)'})}else{tips.push({ok:false,text:'Meta Description: '+meta.length+' car.'})}
+  if(kws.length>0){const found=kws.filter(k=>desc.toLowerCase().includes(k.toLowerCase()));score+=Math.round(25*found.length/kws.length);tips.push({ok:found.length===kws.length,text:found.length+'/'+kws.length+' mots-cles integres'})}else{score+=25;tips.push({ok:true,text:'Pas de mots-cles specifiques'})}
   return{score,tips};
-}
-
-function renderSEOScore(score,tips){
-  const cls=score>=80?'score-good':score>=50?'score-avg':'score-bad';
-  const color=score>=80?'#16a34a':score>=50?'#f59e0b':'#ef4444';
-  return '<div class="seo-score"><div class="score-header"><span style="font-size:0.8rem;font-weight:600;color:var(--muted)">Score SEO</span><span class="score-number '+cls+'">'+score+'/100</span></div><div class="score-bar-wrap"><div class="score-bar" style="width:'+score+'%;background:'+color+'"></div></div>'+tips.map(t=>'<div class="score-item"><div class="score-dot" style="background:'+(t.ok?'#16a34a':'#ef4444')+'"></div>'+t.text+'</div>').join('')+'</div>';
 }
 
 function parseResult(text){
   const descMatch=text.match(/DESCRIPTION:\n([\s\S]*?)(?=META_TITLE:|$)/);
   const titleMatch=text.match(/META_TITLE:\n([\s\S]*?)(?=META_DESCRIPTION:|$)/);
-  const descMetaMatch=text.match(/META_DESCRIPTION:\n([\s\S]*?)$/);
-  return{description:descMatch?descMatch[1].trim():text,metaTitle:titleMatch?titleMatch[1].trim():'',metaDesc:descMetaMatch?descMetaMatch[1].trim():''};
+  const metaMatch=text.match(/META_DESCRIPTION:\n([\s\S]*?)$/);
+  return{description:descMatch?descMatch[1].trim():text,metaTitle:titleMatch?titleMatch[1].trim():'',metaDesc:metaMatch?metaMatch[1].trim():''};
 }
 
 async function generate(){
@@ -247,23 +226,23 @@ async function generate(){
   if(!name){alert('Veuillez entrer le nom du produit');return}
   const btn=document.getElementById('generateBtn');
   btn.disabled=true;btn.innerHTML='Generation en cours <span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>';
-  document.getElementById('resultArea').innerHTML='<div class="word-count">Generation en cours...</div><div class="description-text" id="streamText"></div>';
+  document.getElementById('resultArea').innerHTML='<div class="word-count">Generation en cours...</div>';
   try{
-    const prompt=buildPrompt(name,features,keywords,tone,lang);
-    const fullText=await callAPI(prompt);
+    const fullText=await callAPI(buildPrompt(name,features,keywords,tone,lang));
     currentDescription=fullText;
     const{description,metaTitle,metaDesc}=parseResult(fullText);
-    currentMeta='META TITLE: '+metaTitle+'\nMETA DESCRIPTION: '+metaDesc;
     let highlighted=description;
     keywords.forEach(kw=>{highlighted=highlighted.replace(new RegExp('('+kw+')','gi'),'<span class="highlight">$1</span>')});
     const wc=description.split(/\s+/).filter(w=>w).length;
     const{score,tips}=calcSEOScore(description,metaTitle,metaDesc,keywords);
+    const scoreColor=score>=80?'#16a34a':score>=50?'#f59e0b':'#ef4444';
     document.getElementById('resultArea').innerHTML=
       '<div class="word-count">'+wc+' mots</div>'+
       '<div class="description-text">'+highlighted+'</div>'+
       (metaTitle?'<div class="meta-section"><div class="meta-label">Meta Title</div><div class="meta-text">'+metaTitle+'</div></div>':'')+
       (metaDesc?'<div class="meta-section"><div class="meta-label">Meta Description</div><div class="meta-text">'+metaDesc+'</div></div>':'')+
-      renderSEOScore(score,tips)+
+      '<div class="seo-score"><div class="score-header"><span style="font-size:0.8rem;font-weight:600;color:var(--muted)">Score SEO</span><span class="score-number" style="color:'+scoreColor+'">'+score+'/100</span></div><div class="score-bar-wrap"><div class="score-bar" style="width:'+score+'%;background:'+scoreColor+'"></div></div>'+
+      tips.map(t=>'<div class="score-item"><div class="score-dot" style="background:'+(t.ok?'#16a34a':'#ef4444')+'"></div>'+t.text+'</div>').join('')+'</div>'+
       '<div class="btn-row"><button class="btn-copy" id="copyBtn" onclick="copyText()">Copier le texte</button><button class="btn-regen" onclick="generate()">Regenerer</button></div>';
   }catch(err){
     document.getElementById('resultArea').innerHTML='<div style="color:#e53e3e;padding:1rem;background:#fff5f5;border-radius:10px;">Erreur: '+err.message+'</div>';
@@ -272,29 +251,23 @@ async function generate(){
 
 function copyText(){
   const{description,metaTitle,metaDesc}=parseResult(currentDescription);
-  const text='DESCRIPTION:\n'+description+'\n\nMETA TITLE:\n'+metaTitle+'\n\nMETA DESCRIPTION:\n'+metaDesc;
-  navigator.clipboard.writeText(text).then(()=>{const btn=document.getElementById('copyBtn');if(btn){btn.textContent='â Copie!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copier le texte';btn.classList.remove('copied')},2000)}});
+  navigator.clipboard.writeText('DESCRIPTION:\n'+description+'\n\nMETA TITLE:\n'+metaTitle+'\n\nMETA DESCRIPTION:\n'+metaDesc).then(()=>{const btn=document.getElementById('copyBtn');if(btn){btn.textContent='Copie!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copier le texte';btn.classList.remove('copied')},2000)}});
 }
 
 function loadCSV(input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>parseCSV(e.target.result);reader.readAsText(file,'UTF-8')}
-function handleDrop(e){e.preventDefault();document.getElementById('csvZone').classList.remove('dragover');const file=e.dataTransfer.files[0];if(file&&file.name.endsWith('.csv')){const reader=new FileReader();reader.onload=ev=>parseCSV(ev.target.result);reader.readAsText(file,'UTF-8')}}
-
+function handleDrop(e){e.preventDefault();document.getElementById('csvZone').classList.remove('dragover');const file=e.dataTransfer.files[0];if(file){const reader=new FileReader();reader.onload=ev=>parseCSV(ev.target.result);reader.readAsText(file,'UTF-8')}}
 function parseCSV(text){
-  const lines=text.trim().split('\n');const headers=lines[0].split(',').map(h=>h.trim().toLowerCase().replace(/"/g,''));
+  const lines=text.trim().split('\n');const headers=lines[0].split(',').map(h=>h.trim().replace(/"/g,'').toLowerCase());
   batchProducts=[];
   for(let i=1;i<lines.length;i++){if(!lines[i].trim())continue;const vals=lines[i].split(',').map(v=>v.trim().replace(/"/g,''));const obj={};headers.forEach((h,j)=>{obj[h]=vals[j]||''});batchProducts.push(obj)}
-  showCSVPreview(headers,batchProducts);
-  document.getElementById('batchBtn').disabled=batchProducts.length===0;
+  if(batchProducts.length){
+    const preview=batchProducts.slice(0,3);
+    let html='<div class="csv-preview"><table><tr>'+headers.map(h=>'<th>'+h+'</th>').join('')+'</tr>'+preview.map(p=>'<tr>'+headers.map(h=>'<td>'+(p[h]||'')+'</td>').join('')+'</tr>').join('')+'</table></div>';
+    html+='<p style="font-size:0.8rem;color:var(--muted);margin-bottom:0.8rem">'+batchProducts.length+' produits detectes</p>';
+    document.getElementById('csvPreview').innerHTML=html;
+    document.getElementById('batchBtn').disabled=false;
+  }
 }
-
-function showCSVPreview(headers,products){
-  if(!products.length)return;
-  const preview=products.slice(0,3);
-  let html='<div class="csv-preview"><table><tr>'+headers.map(h=>'<th>'+h+'</th>').join('')+'</tr>'+preview.map(p=>'<tr>'+headers.map(h=>'<td>'+(p[h]||'')+'</td>').join('')+'</tr>').join('')+'</table></div>';
-  html+='<p style="font-size:0.8rem;color:var(--muted);margin-bottom:0.8rem">'+products.length+' produits detectes</p>';
-  document.getElementById('csvPreview').innerHTML=html;
-}
-
 async function runBatch(){
   if(!batchProducts.length)return;
   const btn=document.getElementById('batchBtn');btn.disabled=true;
@@ -307,41 +280,31 @@ async function runBatch(){
     const name=p.nom||p.name||p.produit||Object.values(p)[0];
     const features=p.caracteristiques||p.features||p.description||'';
     const kws=(p.mots_cles||p.keywords||'').split(';').map(k=>k.trim()).filter(Boolean);
-    const resultDiv=document.createElement('div');resultDiv.className='batch-item';
-    resultDiv.innerHTML='<span class="status-pill status-pending">En cours...</span><div class="batch-item-name">'+name+'</div>';
-    document.getElementById('batchResults').appendChild(resultDiv);
+    const div=document.createElement('div');div.className='batch-item';
+    div.innerHTML='<span class="status-pill status-pending">En cours...</span><div class="batch-item-name">'+name+'</div>';
+    document.getElementById('batchResults').appendChild(div);
     try{
-      const prompt=buildPrompt(name,features,kws,batchTone,batchLang);
-      const text=await callAPI(prompt);
+      const text=await callAPI(buildPrompt(name,features,kws,batchTone,batchLang));
       const{description,metaTitle,metaDesc}=parseResult(text);
-      batchResults.push({name,features,description,metaTitle,metaDesc});
-      resultDiv.innerHTML='<span class="status-pill status-done">OK</span><div class="batch-item-name">'+name+'</div><div class="batch-item-desc">'+description.substring(0,100)+'...</div>';
-    }catch(err){
-      batchResults.push({name,features,description:'ERREUR',metaTitle:'',metaDesc:''});
-      resultDiv.innerHTML='<span class="status-pill status-error">Erreur</span><div class="batch-item-name">'+name+'</div>';
-    }
+      batchResults.push({name,description,metaTitle,metaDesc});
+      div.innerHTML='<span class="status-pill status-done">OK</span><div class="batch-item-name">'+name+'</div><div class="batch-item-desc">'+description.substring(0,100)+'...</div>';
+    }catch(e){batchResults.push({name,description:'ERREUR',metaTitle:'',metaDesc:''});div.innerHTML='<span class="status-pill status-error">Erreur</span><div class="batch-item-name">'+name+'</div>';}
     document.getElementById('batchCount').textContent=i+1;
     document.getElementById('batchBar').style.width=Math.round((i+1)/batchProducts.length*100)+'%';
   }
-  btn.disabled=false;
-  document.getElementById('exportBtn').style.display='block';
+  btn.disabled=false;document.getElementById('exportBtn').style.display='block';
 }
-
 function exportCSV(){
   if(!batchResults.length)return;
   const headers=['Handle','Title','Body (HTML)','Vendor','Type','Tags','Published','Option1 Name','Option1 Value','Variant Price','SEO Title','SEO Description'];
-  const rows=batchResults.map(r=>{
-    const handle=r.name.toLowerCase().replace(/[^a-z0-9]+/g,'-');
-    return[handle,r.name,r.description.replace(/\n/g,' '),'ShopFiche','','','true','Title','Default Title','',''+r.metaTitle,''+r.metaDesc].map(v=>'"'+v.replace(/"/g,'""')+'"').join(',');
-  });
+  const rows=batchResults.map(r=>{const handle=r.name.toLowerCase().replace(/[^a-z0-9]+/g,'-');return[handle,r.name,r.description,'ShopFiche','','','true','Title','Default Title','',r.metaTitle,r.metaDesc].map(v=>'"'+v.replace(/"/g,'""')+'"').join(',')});
   const csv=[headers.join(','),...rows].join('\n');
   const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
   const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='shopfiche-export-shopify.csv';a.click();URL.revokeObjectURL(url);
 }
-
 function downloadTemplate(e){
   e.preventDefault();
-  const csv='nom,caracteristiques,mots_cles\n"Montre LED tactile","Prix: 24.99 EUR, Resistante eau, Ecran LED","montre;smartwatch"\n"Casque Bluetooth Pro","Sans fil, 30h batterie, Reduction bruit","casque;bluetooth;audio"';
+  const csv='nom,caracteristiques,mots_cles\n"Montre LED tactile","Prix: 24.99 EUR, Resistante eau","montre;smartwatch"\n"Casque Bluetooth","Sans fil, 30h batterie","casque;bluetooth"';
   const blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
   const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='modele-shopfiche.csv';a.click();URL.revokeObjectURL(url);
 }
