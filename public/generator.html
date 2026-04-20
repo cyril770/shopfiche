@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShopFiche — Generateur de fiches produits SEO Shopify</title>
+<title>ShopFiche â Generateur de fiches produits SEO Shopify</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--ink:#0a0a0a;--paper:#fafaf8;--accent:#1a5cff;--accent-light:#e8efff;--muted:#6b6b6b;--border:#e2e2e0;--green:#16a34a;--green-light:#dcfce7}
+:root{--ink:#0a0a0a;--paper:#fafaf8;--accent:#1a5cff;--accent-light:#e8efff;--muted:#6b6b6b;--border:#e2e2e0;--green:#22c55e;--green-light:#dcfce7}
 body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink)}
 nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(250,250,248,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
 .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:-0.03em}.logo span{color:var(--accent)}
@@ -53,14 +53,14 @@ textarea{resize:vertical;min-height:90px}
 .meta-text{font-size:0.85rem;color:var(--ink);line-height:1.5}
 .seo-score{margin-top:1.2rem;padding:1rem;background:var(--paper);border-radius:12px;border:1px solid var(--border)}
 .score-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.8rem}
-.score-number{font-size:1.8rem;font-weight:700}.score-good{color:var(--green)}.score-avg{color:#f59e0b}.score-bad{color:#ef4444}
+.score-number{font-size:1.8rem;font-weight:700}.score-good{color:#22c55e}.score-avg{color:#f59e0b}.score-bad{color:#ef4444}
 .score-bar-wrap{height:6px;background:#e5e7eb;border-radius:3px;margin-bottom:0.6rem}
 .score-bar{height:6px;border-radius:3px;transition:width 0.5s}
 .score-item{font-size:0.8rem;color:var(--muted);display:flex;align-items:center;gap:0.4rem;margin-bottom:0.3rem}
 .score-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .btn-row{display:flex;gap:0.6rem;margin-top:1rem;flex-wrap:wrap}
 .btn-copy{flex:1;padding:0.7rem;background:var(--accent);color:white;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.85rem;white-space:nowrap}
-.btn-export{flex:1;padding:0.7rem;background:var(--green);color:white;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.85rem;white-space:nowrap}
+.btn-export{flex:1;padding:0.7rem;background:#22c55e;color:white;border:none;border-radius:10px;cursor:pointer;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.85rem;white-space:nowrap}
 .btn-regen{flex:1;padding:0.7rem;background:white;color:var(--ink);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-weight:600;font-family:'DM Sans',sans-serif;font-size:0.85rem}
 .empty-state{text-align:center;padding:3rem 1rem;color:var(--muted)}
 .empty-icon{font-size:2rem;margin-bottom:1rem}
@@ -85,20 +85,20 @@ textarea{resize:vertical;min-height:90px}
 .batch-item-name{font-weight:500;margin-bottom:0.3rem}
 .batch-item-desc{color:var(--muted);font-size:0.8rem;line-height:1.4}
 .status-pill{font-size:0.7rem;padding:2px 8px;border-radius:100px;float:right}
-.status-done{background:var(--green-light);color:var(--green)}
+.status-done{background:var(--green-light);color:#22c55e}
 .status-pending{background:#fef3c7;color:#92400e}
 .status-error{background:#fee2e2;color:#991b1b}
 </style>
 </head>
 <body>
 <nav>
-  <div class="logo">Shop<span>Fiche</span></div>
-  <a href="/" class="nav-back">← Accueil</a>
+  <div class="logo" style="display:flex;align-items:center;gap:8px"><div style="width:32px;height:32px;background:#1e3a5f;border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0"><span style="font-size:18px;font-weight:900;color:white;font-family:Arial Black,Arial,sans-serif">S</span><div style="position:absolute;top:-3px;right:-3px;width:10px;height:10px;background:#22c55e;border-radius:50%"></div></div>Shop<span style="color:#22c55e" style="color:#22c55e">Fiche</span></div>
+  <a href="/" class="nav-back">â Accueil</a>
   <span style="font-size:0.75rem;color:var(--muted);padding:0.3rem 0.8rem;border:1px solid var(--border);border-radius:100px;">Beta gratuite</span>
 </nav>
 <div class="container">
   <h1>Generez vos <span>fiches produits</span></h1>
-  <p class="subtitle">Description SEO, Meta Title, Meta Description — prets a coller dans Shopify.</p>
+  <p class="subtitle">Description SEO, Meta Title, Meta Description â prets a coller dans Shopify.</p>
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('single')">Produit unique</button>
     <button class="tab-btn" onclick="switchTab('batch')">Import CSV en masse</button>
@@ -107,7 +107,7 @@ textarea{resize:vertical;min-height:90px}
   <div id="tab-single" class="tab-content active">
     <div class="grid">
       <div class="panel">
-        <div class="panel-title">● ● ● Votre produit</div>
+        <div class="panel-title">â â â Votre produit</div>
         <div class="field"><label>Nom du produit</label><input type="text" id="productName" placeholder="Ex: Montre Connectee Sport X200"></div>
         <div class="field"><label>Caracteristiques</label><textarea id="features" placeholder="Ex: Bluetooth 5.3, Etanche IP68, Batterie 7 jours..."></textarea></div>
         <div class="field">
@@ -141,9 +141,9 @@ textarea{resize:vertical;min-height:90px}
         <button class="btn-generate" id="generateBtn" onclick="generate()">Generer la fiche</button>
       </div>
       <div class="panel">
-        <div class="panel-title">● ● ● Fiche generee</div>
+        <div class="panel-title">â â â Fiche generee</div>
         <div id="resultArea" class="result-area">
-          <div class="empty-state"><div class="empty-icon">✏️</div><p>Votre fiche apparaitra ici</p></div>
+          <div class="empty-state"><div class="empty-icon">âï¸</div><p>Votre fiche apparaitra ici</p></div>
         </div>
       </div>
     </div>
@@ -152,7 +152,7 @@ textarea{resize:vertical;min-height:90px}
   <div id="tab-batch" class="tab-content">
     <div class="grid">
       <div class="panel">
-        <div class="panel-title">● ● ● Import CSV</div>
+        <div class="panel-title">â â â Import CSV</div>
         <div class="csv-zone" id="csvZone" onclick="document.getElementById('csvInput').click()" ondragover="event.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="handleDrop(event)">
           <p>Glissez votre fichier CSV ici</p>
           <p><strong>ou cliquez pour parcourir</strong></p>
@@ -173,9 +173,9 @@ textarea{resize:vertical;min-height:90px}
         <a id="csvTemplateLink" href="#" onclick="downloadTemplate(event)" style="display:block;text-align:center;font-size:0.8rem;color:var(--accent);margin-top:0.8rem">Telecharger le modele CSV</a>
       </div>
       <div class="panel">
-        <div class="panel-title">● ● ● Resultats</div>
+        <div class="panel-title">â â â Resultats</div>
         <div id="batchArea">
-          <div class="empty-state"><div class="empty-icon">📦</div><p>Importez un CSV pour commencer</p><p style="font-size:0.8rem;margin-top:0.5rem">Jusqu'a 100 produits en une fois</p></div>
+          <div class="empty-state"><div class="empty-icon">ð¦</div><p>Importez un CSV pour commencer</p><p style="font-size:0.8rem;margin-top:0.5rem">Jusqu'a 100 produits en une fois</p></div>
         </div>
       </div>
     </div>
@@ -197,7 +197,7 @@ document.getElementById('productName').addEventListener('input',function(){
   for(const[key,chips]of Object.entries(suggestionsMap)){if(val.includes(key)){chips.forEach(c=>{const el=document.createElement('span');el.className='suggestion-chip';el.textContent=c;el.onclick=()=>{keywords.push(c);renderTags();el.remove()};sugg.appendChild(el)});break}}
 });
 function addKeyword(){const input=document.getElementById('keywordInput');const val=input.value.trim();if(val&&!keywords.includes(val)){keywords.push(val);renderTags()}input.value=''}
-function renderTags(){const container=document.getElementById('keywordTags');container.innerHTML='';keywords.forEach((kw,i)=>{const tag=document.createElement('span');tag.className='keyword-tag';tag.innerHTML=kw+' <button onclick="removeKeyword('+i+')">×</button>';container.appendChild(tag)})}
+function renderTags(){const container=document.getElementById('keywordTags');container.innerHTML='';keywords.forEach((kw,i)=>{const tag=document.createElement('span');tag.className='keyword-tag';tag.innerHTML=kw+' <button onclick="removeKeyword('+i+')">Ã</button>';container.appendChild(tag)})}
 function removeKeyword(i){keywords.splice(i,1);renderTags()}
 
 function buildPrompt(name,features,kws,t,l){
@@ -273,7 +273,7 @@ async function generate(){
 function copyText(){
   const{description,metaTitle,metaDesc}=parseResult(currentDescription);
   const text='DESCRIPTION:\n'+description+'\n\nMETA TITLE:\n'+metaTitle+'\n\nMETA DESCRIPTION:\n'+metaDesc;
-  navigator.clipboard.writeText(text).then(()=>{const btn=document.getElementById('copyBtn');if(btn){btn.textContent='✓ Copie!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copier le texte';btn.classList.remove('copied')},2000)}});
+  navigator.clipboard.writeText(text).then(()=>{const btn=document.getElementById('copyBtn');if(btn){btn.textContent='â Copie!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copier le texte';btn.classList.remove('copied')},2000)}});
 }
 
 function loadCSV(input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>parseCSV(e.target.result);reader.readAsText(file,'UTF-8')}
