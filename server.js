@@ -20,8 +20,8 @@ app.post('/api/checkout', (req, res) => {
     const body = JSON.stringify({
         mode: 'subscription',
         line_items: [{ price: STRIPE_PRICE_ID, quantity: 1 }],
-        success_url: 'https://shopfiche-4.onrender.com/success.html?session_id={CHECKOUT_SESSION_ID}',
-        cancel_url: 'https://shopfiche-4.onrender.com/?cancelled=1',
+        success_url: 'https://shopfiche.fr/success.html?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url: 'https://shopfiche.fr/?cancelled=1',
         allow_promotion_codes: true
     });
     const options = {
@@ -46,7 +46,7 @@ app.post('/api/checkout', (req, res) => {
     });
     stripeReq.on('error', (err) => res.status(500).json({ error: err.message }));
     // Encode form data
-    const formData = 'mode=subscription&line_items[0][price]=' + STRIPE_PRICE_ID + '&line_items[0][quantity]=1&success_url=https%3A%2F%2Fshopfiche-4.onrender.com%2Fsuccess.html%3Fsession_id%3D%7BCHECKOUT_SESSION_ID%7D&cancel_url=https%3A%2F%2Fshopfiche-4.onrender.com%2F%3Fcancelled%3D1&allow_promotion_codes=true';
+    const formData = 'mode=subscription&line_items[0][price]=' + STRIPE_PRICE_ID + '&line_items[0][quantity]=1&success_url=https%3A%2F%2Fshopfiche.fr%2Fsuccess.html%3Fsession_id%3D%7BCHECKOUT_SESSION_ID%7D&cancel_url=https%3A%2F%2Fshopfiche.fr%2F%3Fcancelled%3D1&allow_promotion_codes=true';
     stripeReq.write(formData);
     stripeReq.end();
 });
