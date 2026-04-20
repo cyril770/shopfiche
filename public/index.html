@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShopFiche &acirc;ÂÂ Generateur de fiches produits SEO pour Shopify</title>
-<meta name="description" content="Generez des descriptions produits SEO professionnelles pour Shopify en 10 secondes. Import CSV, export Shopify, multilingue, score SEO. Beta gratuite.">
+<title>ShopFiche - Generateur de fiches produits SEO pour Shopify</title>
+<meta name="description" content="Generez des descriptions produits SEO professionnelles pour Shopify en 10 secondes. Import CSV, export Shopify, 5 langues, score SEO. Beta gratuite.">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--ink:#0a0a0a;--paper:#fafaf8;--accent:#1a5cff;--navy:#1e3a5f;--al:#e8efff;--muted:#6b6b6b;--border:#e2e2e0;--green:#22c55e;--gl:#dcfce7}
+:root{--ink:#0a0a0a;--paper:#fafaf8;--accent:#1a5cff;--navy:#1e3a5f;--green:#22c55e;--muted:#6b6b6b;--border:#e2e2e0;--al:#e8efff;--gl:#dcfce7}
 body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink)}
 nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(250,250,248,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:-0.03em}.logo span{color:var(--accent)}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:-0.03em;display:flex;align-items:center;gap:10px}.logo-icon{width:34px;height:34px;background:#1e3a5f;border-radius:9px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}.logo-s{font-size:20px;font-weight:900;color:white;font-family:'Arial Black',Arial,sans-serif;line-height:1}.logo-dot{position:absolute;top:-4px;right:-4px;width:11px;height:11px;background:#22c55e;border-radius:50%;border:2px solid white}.logo-text .f{color:#22c55e}
 .nav-cta{padding:0.5rem 1.2rem;background:var(--accent);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.9rem;text-decoration:none}
 .hero{padding:8rem 2rem 4rem;text-align:center;max-width:820px;margin:0 auto}
-.badge{display:inline-block;background:var(--gl);color:#22c55e;font-size:0.8rem;font-weight:600;padding:0.3rem 1rem;border-radius:100px;margin-bottom:1.5rem}
+.badge{display:inline-block;background:var(--gl);color:var(--green);font-size:0.8rem;font-weight:600;padding:0.3rem 1rem;border-radius:100px;margin-bottom:1.5rem}
 h1{font-family:'Space Grotesk',sans-serif;font-size:2.8rem;font-weight:700;line-height:1.15;margin-bottom:1rem;letter-spacing:-0.03em}
 h1 span{color:var(--accent)}
 .hero-sub{font-size:1.1rem;color:var(--muted);line-height:1.6;margin-bottom:2rem;max-width:580px;margin-left:auto;margin-right:auto}
@@ -25,82 +25,45 @@ section{padding:4rem 2rem}
 .wrap{max-width:1100px;margin:0 auto}
 h2{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;text-align:center;margin-bottom:0.5rem;letter-spacing:-0.02em}
 .sub{text-align:center;color:var(--muted);margin-bottom:3rem}
-/* FEATURES SHOWCASE */
-.showcase{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:4rem}
-.showcase.rev{direction:rtl}.showcase.rev>*{direction:ltr}
-@media(max-width:768px){.showcase{grid-template-columns:1fr;gap:2rem}.showcase.rev{direction:ltr}}
-.feature-visual{background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden}
-.visual-header{background:var(--paper);padding:0.7rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:0.5rem}
-.dot{width:10px;height:10px;border-radius:50%}
-.visual-body{padding:1.2rem}
-.feature-text{}
-.feat-badge{background:var(--al);color:var(--accent);font-size:0.75rem;font-weight:600;padding:0.25rem 0.8rem;border-radius:100px;display:inline-block;margin-bottom:0.8rem}
-.feat-title{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:0.8rem;line-height:1.2}
-.feat-desc{color:var(--muted);line-height:1.7;margin-bottom:1rem;font-size:0.95rem}
-.feat-points{list-style:none}
-.feat-points li{display:flex;align-items:flex-start;gap:0.5rem;margin-bottom:0.5rem;font-size:0.9rem}
-.feat-points li:before{content:"&acirc;ÂÂ";color:#22c55e;font-weight:700;flex-shrink:0;margin-top:1px}
-/* Input mockup */
-.mock-input{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:0.5rem 0.8rem;font-size:0.8rem;margin-bottom:0.5rem;color:var(--ink)}
-.mock-label{font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin-bottom:0.3rem}
-.mock-tag{background:var(--al);color:var(--accent);font-size:0.7rem;padding:0.2rem 0.6rem;border-radius:100px;display:inline-block;margin:2px}
-.mock-btn{background:var(--accent);color:white;border:none;border-radius:8px;padding:0.5rem 1rem;font-size:0.8rem;font-weight:600;width:100%;margin-top:0.5rem;cursor:default}
-.mock-result{background:var(--paper);border-radius:8px;padding:0.8rem;font-size:0.78rem;line-height:1.6;color:var(--ink);margin-bottom:0.5rem}
-.mock-meta{background:var(--al);border-radius:8px;padding:0.6rem;margin-bottom:0.4rem}
-.mock-meta-lbl{font-size:0.65rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:0.2rem}
-.mock-meta-val{font-size:0.75rem;color:var(--ink);font-weight:500}
-.score-wrap{background:white;border:1px solid var(--border);border-radius:8px;padding:0.7rem;margin-top:0.5rem}
-.score-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.4rem}
-.score-num{font-size:1.4rem;font-weight:700;color:#22c55e}
-.score-bar-bg{height:6px;background:#e5e7eb;border-radius:3px;margin-bottom:0.5rem}
-.score-bar{height:6px;background:#22c55e;border-radius:3px;width:92%}
-.score-item{font-size:0.7rem;color:var(--muted);display:flex;align-items:center;gap:0.3rem;margin-bottom:0.2rem}
-.score-dot{width:6px;height:6px;border-radius:50%;background:#22c55e}
-/* CSV mockup */
-.csv-table{width:100%;font-size:0.72rem;border-collapse:collapse}
-.csv-table th{background:var(--paper);padding:0.4rem 0.5rem;text-align:left;border-bottom:1px solid var(--border);color:var(--muted);font-size:0.65rem;text-transform:uppercase}
-.csv-table td{padding:0.35rem 0.5rem;border-bottom:1px solid var(--border)}
-.progress-wrap{margin:0.8rem 0}
-.progress-bg{height:8px;background:#e5e7eb;border-radius:4px}
-.progress-fill{height:8px;background:var(--accent);border-radius:4px;width:100%}
-.status-ok{background:var(--gl);color:#22c55e;font-size:0.65rem;padding:2px 6px;border-radius:100px;font-weight:600}
-/* Export mockup */
-.export-btn{background:#22c55e;color:white;border:none;border-radius:8px;padding:0.6rem 1rem;font-size:0.8rem;font-weight:600;width:100%;cursor:default;margin-top:0.5rem;display:flex;align-items:center;justify-content:center;gap:0.4rem}
-.shopify-logo{background:#96bf48;color:white;font-size:0.65rem;font-weight:700;padding:2px 6px;border-radius:4px}
-/* Lang mockup */
-.lang-row{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.8rem}
-.lang-btn{padding:0.3rem 0.7rem;border:1px solid var(--border);border-radius:6px;background:white;font-size:0.78rem}
-.lang-btn.on{background:var(--accent);color:white;border-color:var(--accent)}
-.lang-result{background:var(--paper);border-radius:8px;padding:0.7rem;font-size:0.75rem;line-height:1.6;margin-bottom:0.4rem}
-.lang-badge{font-size:0.65rem;font-weight:600;color:var(--muted);margin-bottom:0.3rem;text-transform:uppercase;letter-spacing:0.06em}
-/* Steps */
+.founder-section{background:var(--navy);padding:3rem 2rem;text-align:center}
+.founder-title{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:white;margin-bottom:0.6rem}
+.founder-title .g{color:var(--accent)}
+.founder-sub{color:rgba(255,255,255,0.7);font-size:0.95rem;line-height:1.6;margin-bottom:1.5rem}
+.founder-sub strong{color:white}
+.founder-stats{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700}
+.stat-label{font-size:0.8rem;color:rgba(255,255,255,0.5)}
+.stat-sep{color:rgba(255,255,255,0.2);font-size:2rem}
+.badge-red{display:inline-block;background:#dc2626;color:white;font-size:0.75rem;font-weight:600;padding:0.3rem 1rem;border-radius:100px;margin-bottom:1rem}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.feature-card{background:var(--paper);border:1px solid var(--border);border-radius:16px;padding:1.5rem}
+.feature-icon{font-size:1.8rem;margin-bottom:1rem}
+.feature-title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;margin-bottom:0.5rem}
+.feature-desc{font-size:0.9rem;color:var(--muted);line-height:1.6}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
 @media(max-width:600px){.steps{grid-template-columns:1fr}}
 .step{text-align:center}
 .step-num{width:44px;height:44px;background:var(--accent);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;margin:0 auto 1rem}
 .step-t{font-weight:600;margin-bottom:0.4rem}
 .step-d{font-size:0.9rem;color:var(--muted)}
-/* Pricing */
 .pricing-card{max-width:420px;margin:0 auto;background:white;border:2px solid var(--accent);border-radius:20px;padding:2.5rem;text-align:center}
 .pricing-badge{background:var(--accent);color:white;font-size:0.75rem;font-weight:600;padding:0.3rem 1rem;border-radius:100px;margin-bottom:1rem;display:inline-block}
 .price{font-family:'Space Grotesk',sans-serif;font-size:3rem;font-weight:700;margin:0.5rem 0}
 .price span{font-size:1rem;color:var(--muted);font-family:'DM Sans',sans-serif}
 .pf{list-style:none;margin:1.5rem 0;text-align:left}
 .pf li{padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.9rem;display:flex;align-items:center;gap:0.5rem}
-.pf li:before{content:"&acirc;ÂÂ";color:#22c55e;font-weight:700}
-/* FAQ */
+.pf li:before{content:"\2713";color:var(--green);font-weight:700}
 .faq-wrap{max-width:780px;margin:0 auto}
 .faq-cat{font-family:'Space Grotesk',sans-serif;font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin:2rem 0 0.8rem}
 .faq-item{background:white;border:1px solid var(--border);border-radius:12px;margin-bottom:0.6rem;overflow:hidden}
 .faq-q{padding:1.1rem 1.4rem;cursor:pointer;font-weight:500;display:flex;justify-content:space-between;align-items:center;font-size:0.92rem}
 .faq-q:hover{background:var(--paper)}
-.faq-arr{color:var(--muted);transition:transform 0.2s;font-size:1rem}
+.faq-arr{color:var(--muted);transition:transform 0.2s}
 .faq-a{padding:0 1.4rem;max-height:0;overflow:hidden;transition:max-height 0.3s,padding 0.3s;font-size:0.88rem;color:var(--muted);line-height:1.7}
 .faq-item.open .faq-a{max-height:400px;padding:0 1.4rem 1.1rem}
 .faq-item.open .faq-arr{transform:rotate(180deg)}
-/* CTA */
-.cta{background:var(--accent);color:white;text-align:center}
-.cta h2{color:white}.cta p{color:rgba(255,255,255,0.8);margin-bottom:2rem}
+.cta-section{background:var(--accent);color:white;text-align:center}
+.cta-section h2{color:white}.cta-section .sub{color:rgba(255,255,255,0.8);margin-bottom:2rem}
 .btn-w{padding:0.9rem 2rem;background:white;color:var(--accent);border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;display:inline-block}
 footer{background:var(--ink);color:rgba(255,255,255,0.5);padding:2rem;text-align:center;font-size:0.85rem}
 footer a{color:rgba(255,255,255,0.7);text-decoration:none;margin:0 1rem}
@@ -108,244 +71,52 @@ footer a{color:rgba(255,255,255,0.7);text-decoration:none;margin:0 1rem}
 </head>
 <body>
 <nav>
-  <div class="logo" style="display:flex;align-items:center;gap:8px"><div style="width:32px;height:32px;background:#1e3a5f;border-radius:8px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0"><span style="font-size:18px;font-weight:900;color:white;font-family:Arial Black,Arial,sans-serif">S</span><div style="position:absolute;top:-3px;right:-3px;width:10px;height:10px;background:#22c55e;border-radius:50%"></div></div>Shop<span style="color:#22c55e" style="color:#22c55e">Fiche</span></div>
+  <div class="logo"><div class="logo-icon"><span class="logo-s">S</span><div class="logo-dot"></div></div><span class="logo-text">Shop<span class="f">Fiche</span></span></div>
   <a href="/generator.html" class="nav-cta">Essayer gratuitement</a>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
-  <div class="badge">Beta gratuite &acirc;ÂÂ sans carte bancaire</div>
+  <div class="badge">Beta gratuite - sans carte bancaire</div>
   <h1>Fiches produits SEO<br><span>parfaites en 10 secondes</span></h1>
-  <p class="hero-sub">Fini les heures perdues sur vos descriptions Shopify. ShopFiche genere automatiquement des fiches optimisees Google, prete a coller ou a importer en masse.</p>
+  <p class="hero-sub">Arretez de perdre des heures sur vos descriptions Shopify. ShopFiche genere automatiquement des fiches optimisees Google, pretes a coller ou a importer en masse.</p>
   <div class="btns">
     <a href="/generator.html" class="btn-p">Generer ma premiere fiche gratuitement</a>
     <a href="#fonctionnalites" class="btn-s">Voir les fonctionnalites</a>
   </div>
 </div>
 
-<!-- FEATURES SHOWCASE -->
-
-<!-- BANDEAU FONDATEUR -->
-<section style="background:#0a0a0a;padding:3rem 2rem;text-align:center">
+<div class="founder-section">
   <div style="max-width:700px;margin:0 auto">
-    <div style="background:#dc2626;color:white;font-size:0.75rem;font-weight:600;padding:0.3rem 1rem;border-radius:100px;display:inline-block;margin-bottom:1rem">Offre limit&eacute;e &#8212; ferme &#195;  100 inscrits</div>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:white;margin-bottom:0.6rem;letter-spacing:-0.02em">Devenez <span style="color:#1a5cff">Beta Fondateur</span></h2>
-    <p style="color:rgba(255,255,255,0.7);font-size:0.95rem;line-height:1.6;margin-bottom:1.5rem">60 jours gratuits puis <strong style="color:white">9â¬/mois &#195;  vie</strong> au lieu de 29â¬. Ce tarif fondateur ne sera jamais repropos&eacute;.</p>
-    <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap">
-      <div style="text-align:center"><div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:#dc2626" id="homePlaces">100</div><div style="font-size:0.8rem;color:rgba(255,255,255,0.6)">places restantes</div></div>
-      <div style="color:rgba(255,255,255,0.3);font-size:2rem">|</div>
-      <div style="text-align:center"><div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:#22c55e">9â¬</div><div style="font-size:0.8rem;color:rgba(255,255,255,0.6)">/mois &#195;  vie</div></div>
-      <div style="color:rgba(255,255,255,0.3);font-size:2rem">|</div>
-      <div style="text-align:center"><div style="font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:white">60j</div><div style="font-size:0.8rem;color:rgba(255,255,255,0.6)">gratuits</div></div>
+    <span class="badge-red">Offre limitee - ferme a 100 inscrits</span>
+    <div class="founder-title">Devenez <span class="g">Beta Fondateur</span></div>
+    <p class="founder-sub">60 jours gratuits puis <strong>9&#8364;/mois a vie</strong> au lieu de 29&#8364;. Ce tarif fondateur ne sera jamais repropose.</p>
+    <div class="founder-stats">
+      <div><div class="stat-num" style="color:#dc2626" id="homePlaces">100</div><div class="stat-label">places restantes</div></div>
+      <div class="stat-sep">|</div>
+      <div><div class="stat-num" style="color:var(--green)">9&#8364;</div><div class="stat-label">/mois a vie</div></div>
+      <div class="stat-sep">|</div>
+      <div><div class="stat-num" style="color:white">60j</div><div class="stat-label">gratuits</div></div>
     </div>
-    <a href="/fondateur.html" style="display:inline-block;padding:1rem 2.5rem;background:#1a5cff;color:white;border-radius:10px;font-size:1rem;font-weight:600;text-decoration:none">Rejoindre les fondateurs &#8212; gratuitement</a>
-    <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:0.8rem">Aucune CB Â· Annulation libre Â· Tarif bloqu&eacute; &#195;  vie</div>
+    <a href="/fondateur.html" class="btn-p">Rejoindre les fondateurs - gratuitement</a>
+    <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:0.8rem">Aucune CB - Annulation libre - Tarif bloque a vie</div>
   </div>
-</section><section id="fonctionnalites" style="background:white">
+</div>
+
+<section id="fonctionnalites" style="background:white">
 <div class="wrap">
 <h2>Tout ce que ShopFiche fait pour vous</h2>
 <p class="sub">6 fonctionnalites puissantes pour scaler votre boutique Shopify</p>
-
-<!-- Feature 1 : Generateur -->
-<div class="showcase">
-  <div class="feature-visual">
-    <div class="visual-header">
-      <div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div>
-      <span style="font-size:0.72rem;color:var(--muted);margin-left:0.5rem">Generateur de fiche</span>
-    </div>
-    <div class="visual-body">
-      <div class="mock-label">Nom du produit</div>
-      <div class="mock-input">Montre LED tactile waterproof</div>
-      <div class="mock-label">Caracteristiques</div>
-      <div class="mock-input" style="font-size:0.72rem;color:var(--muted)">Prix: 24,99&acirc;ÂÂ¬ &#195;Â· Resistante eau &#195;Â· Ecran LED &#195;Â· Design moderne</div>
-      <div style="margin:0.4rem 0"><span class="mock-tag">montre connectee</span><span class="mock-tag">smartwatch</span></div>
-      <div class="mock-btn">Generation en cours...</div>
-      <div style="height:0.6rem"></div>
-      <div class="mock-result">Decouvrez notre Montre LED tactile waterproof, l'accessoire indispensable pour allier style et performance a 24,99&acirc;ÂÂ¬. Son ecran tactile lumineux et sa resistance a l'eau en font le compagnon ideal pour le sport et le quotidien. Con&#195;Â§ue pour les amateurs de technologie et de mode, elle combine...</div>
-      <div class="mock-meta"><div class="mock-meta-lbl">Meta Title</div><div class="mock-meta-val">Montre LED Tactile Waterproof &acirc;ÂÂ Elegante et Resistante</div></div>
-      <div class="mock-meta"><div class="mock-meta-lbl">Meta Description</div><div class="mock-meta-val">Commandez votre montre LED tactile waterproof a 24,99&acirc;ÂÂ¬. Elegante, resistante a l'eau, ideale pour le sport.</div></div>
-    </div>
-  </div>
-  <div class="feature-text">
-    <span class="feat-badge">Fonctionnalite 1</span>
-    <div class="feat-title">Description SEO generee en 10 secondes</div>
-    <p class="feat-desc">Entrez le nom et les caracteristiques de votre produit. ShopFiche genere une fiche complete optimisee pour Google.fr avec les bons mots-cles integres naturellement.</p>
-    <ul class="feat-points">
-      <li>Description 160-200 mots, phrases completes</li>
-      <li>Meta Title optimise (50-60 caracteres)</li>
-      <li>Meta Description incitative (140-160 caracteres)</li>
-      <li>Propulse par GPT-4o &acirc;ÂÂ qualite maximale</li>
-      <li>4 tons au choix : professionnel, luxe, enthousiaste, decontracte</li>
-    </ul>
-  </div>
+<div class="features-grid">
+  <div class="feature-card"><div class="feature-icon">&#9889;</div><div class="feature-title">Generation en 10 secondes</div><div class="feature-desc">Description 160-200 mots, Meta Title et Meta Description optimises pour Google.fr, prets a coller dans Shopify.</div></div>
+  <div class="feature-card"><div class="feature-icon">&#128230;</div><div class="feature-title">Import CSV en masse</div><div class="feature-desc">Uploadez un CSV avec tous vos produits. ShopFiche genere toutes les fiches automatiquement. 50 produits en 5 minutes.</div></div>
+  <div class="feature-card"><div class="feature-icon">&#128229;</div><div class="feature-title">Export direct Shopify</div><div class="feature-desc">Telechargez un CSV au format exact Shopify. Importez en 1 clic dans votre boutique. Zero copier-coller.</div></div>
+  <div class="feature-card"><div class="feature-icon">&#127758;</div><div class="feature-title">5 langues disponibles</div><div class="feature-desc">Francais, Anglais, Espagnol, Allemand, Italien. Vendez dans toute l'Europe sans effort de traduction.</div></div>
+  <div class="feature-card"><div class="feature-icon">&#128202;</div><div class="feature-title">Score SEO /100</div><div class="feature-desc">Chaque fiche est notee sur 100 avec analyse detaillee. Longueur, mots-cles, meta tags. Vous savez exactement ou vous en etes.</div></div>
+  <div class="feature-card"><div class="feature-icon">&#127919;</div><div class="feature-title">IA GPT-4o</div><div class="feature-desc">Le modele le plus performant d'OpenAI. 95% des fiches utilisables directement sans modification.</div></div>
 </div>
-
-<!-- Feature 2 : Score SEO -->
-<div class="showcase rev">
-  <div class="feature-visual">
-    <div class="visual-header">
-      <div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div>
-      <span style="font-size:0.72rem;color:var(--muted);margin-left:0.5rem">Analyse SEO automatique</span>
-    </div>
-    <div class="visual-body">
-      <div class="score-wrap">
-        <div class="score-top"><span style="font-size:0.8rem;font-weight:600;color:var(--muted)">Score SEO</span><span class="score-num">95/100</span></div>
-        <div class="score-bar-bg"><div class="score-bar" style="width:95%"></div></div>
-        <div class="score-item"><div class="score-dot"></div>Description: 178 mots (ideal 160-200) &acirc;ÂÂ</div>
-        <div class="score-item"><div class="score-dot"></div>Meta Title: 54 caracteres (ideal 50-60) &acirc;ÂÂ</div>
-        <div class="score-item"><div class="score-dot"></div>Meta Description: 152 caracteres (ideal 140-160) &acirc;ÂÂ</div>
-        <div class="score-item"><div class="score-dot"></div>Mots-cles integres: 2/2 &acirc;ÂÂ</div>
-      </div>
-    </div>
-  </div>
-  <div class="feature-text">
-    <span class="feat-badge">Fonctionnalite 2</span>
-    <div class="feat-title">Score SEO /100 sur chaque fiche</div>
-    <p class="feat-desc">Chaque fiche est automatiquement analysee et notee sur 100 selon les criteres Google. Vous savez exactement si votre fiche est optimale avant de la publier.</p>
-    <ul class="feat-points">
-      <li>Note globale sur 100 avec detail par critere</li>
-      <li>Verification longueur description, title, meta</li>
-      <li>Controle integration des mots-cles</li>
-      <li>Conseils d'amelioration en temps reel</li>
-    </ul>
-  </div>
-</div>
-
-<!-- Feature 3 : Import CSV -->
-<div class="showcase">
-  <div class="feature-visual">
-    <div class="visual-header">
-      <div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div>
-      <span style="font-size:0.72rem;color:var(--muted);margin-left:0.5rem">Import CSV en masse</span>
-    </div>
-    <div class="visual-body">
-      <table class="csv-table">
-        <tr><th>Nom</th><th>Caracteristiques</th><th>Statut</th></tr>
-        <tr><td>Montre LED</td><td>24,99&acirc;ÂÂ¬, waterproof...</td><td><span class="status-ok">OK</span></td></tr>
-        <tr><td>Casque BT Pro</td><td>49,99&acirc;ÂÂ¬, 30h batterie...</td><td><span class="status-ok">OK</span></td></tr>
-        <tr><td>Lampe bureau</td><td>19,99&acirc;ÂÂ¬, USB, LED...</td><td><span class="status-ok">OK</span></td></tr>
-      </table>
-      <div class="progress-wrap">
-        <div style="display:flex;justify-content:space-between;font-size:0.72rem;color:var(--muted);margin-bottom:0.3rem"><span>Generation en cours</span><span>3/3</span></div>
-        <div class="progress-bg"><div class="progress-fill"></div></div>
-      </div>
-      <div style="font-size:0.75rem;color:#22c55e;font-weight:600;text-align:center">3 fiches generees en 28 secondes</div>
-    </div>
-  </div>
-  <div class="feature-text">
-    <span class="feat-badge">Fonctionnalite 3</span>
-    <div class="feat-title">Importez 50 produits en une fois</div>
-    <p class="feat-desc">Uploadez un simple fichier CSV avec vos produits. ShopFiche genere toutes les fiches automatiquement avec une barre de progression en temps reel.</p>
-    <ul class="feat-points">
-      <li>Jusqu'a 100 produits par import</li>
-      <li>Colonnes : nom, caracteristiques, mots-cles</li>
-      <li>Modele CSV telechargeables en 1 clic</li>
-      <li>Generation sequentielle automatique</li>
-      <li>50 produits en moins de 10 minutes</li>
-    </ul>
-  </div>
-</div>
-
-<!-- Feature 4 : Export Shopify -->
-<div class="showcase rev">
-  <div class="feature-visual">
-    <div class="visual-header">
-      <div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div>
-      <span style="font-size:0.72rem;color:var(--muted);margin-left:0.5rem">Export Shopify</span>
-    </div>
-    <div class="visual-body">
-      <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.5rem">Fichier genere pret a importer :</div>
-      <div style="background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:0.6rem;font-size:0.7rem;font-family:monospace;color:var(--ink);margin-bottom:0.6rem">Handle, Title, Body HTML, SEO Title,<br>SEO Description, Vendor, Price...<br><span style="color:#22c55e">montre-led, Montre LED..., &lt;p&gt;Decouvrez...&lt;/p&gt;, Montre LED Tactile..., Commandez votre...</span></div>
-      <div class="export-btn">Telecharger CSV Shopify <span class="shopify-logo">SHOPIFY</span></div>
-      <div style="font-size:0.72rem;color:var(--muted);text-align:center;margin-top:0.5rem">Shopify > Produits > Importer > 1 clic</div>
-    </div>
-  </div>
-  <div class="feature-text">
-    <span class="feat-badge">Fonctionnalite 4</span>
-    <div class="feat-title">Export direct au format Shopify</div>
-    <p class="feat-desc">Une fois vos fiches generees, telechargez un fichier CSV au format exact attendu par Shopify. Importez-le en 1 clic dans votre boutique. Zero copier-coller.</p>
-    <ul class="feat-points">
-      <li>Format CSV natif Shopify</li>
-      <li>Toutes les colonnes pre-remplies</li>
-      <li>Handle, Title, SEO Title, SEO Description</li>
-      <li>Import direct dans Shopify en 30 secondes</li>
-    </ul>
-  </div>
-</div>
-
-<!-- Feature 5 : Multilingue -->
-<div class="showcase">
-  <div class="feature-visual">
-    <div class="visual-header">
-      <div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div>
-      <span style="font-size:0.72rem;color:var(--muted);margin-left:0.5rem">5 langues disponibles</span>
-    </div>
-    <div class="visual-body">
-      <div class="lang-row">
-        <div class="lang-btn on">FR</div>
-        <div class="lang-btn">EN</div>
-        <div class="lang-btn">ES</div>
-        <div class="lang-btn">DE</div>
-        <div class="lang-btn">IT</div>
-      </div>
-      <div class="lang-badge">Francais</div>
-      <div class="lang-result">Decouvrez notre Montre LED tactile waterproof, l'accessoire ideal pour allier style et performance...</div>
-      <div class="lang-badge">English</div>
-      <div class="lang-result">Discover our LED touchscreen waterproof watch, the perfect accessory combining style and performance...</div>
-      <div style="font-size:0.72rem;color:var(--accent);font-weight:500">+ Espagnol, Allemand, Italien disponibles</div>
-    </div>
-  </div>
-  <div class="feature-text">
-    <span class="feat-badge">Fonctionnalite 5</span>
-    <div class="feat-title">Vendez dans toute l'Europe</div>
-    <p class="feat-desc">Generez vos fiches en 5 langues en 1 clic. Touchez les marches francais, anglais, espagnol, allemand et italien sans effort de traduction.</p>
-    <ul class="feat-points">
-      <li>Francais, Anglais, Espagnol, Allemand, Italien</li>
-      <li>Meme produit en 5 langues en 50 secondes</li>
-      <li>SEO optimise pour chaque pays</li>
-      <li>Aussi disponible sur l'import CSV en masse</li>
-    </ul>
-  </div>
-</div>
-
-<!-- Feature 6 : GPT-4o -->
-<div class="showcase rev">
-  <div class="feature-visual">
-    <div class="visual-header">
-      <div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28c840"></div>
-      <span style="font-size:0.72rem;color:var(--muted);margin-left:0.5rem">IA GPT-4o</span>
-    </div>
-    <div class="visual-body">
-      <div style="text-align:center;padding:1rem 0">
-        <div style="width:56px;height:56px;background:#0a0a0a;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 0.8rem;font-size:1.4rem">&#195;°ÂÂ¤Â</div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;margin-bottom:0.4rem">GPT-4o</div>
-        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:0.8rem">Le modele le plus performant d'OpenAI</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;text-align:left">
-          <div style="background:var(--gl);border-radius:8px;padding:0.5rem;font-size:0.72rem"><strong style="color:#22c55e">Qualite</strong><br><span style="color:var(--muted)">Descriptions naturelles sans fautes</span></div>
-          <div style="background:var(--al);border-radius:8px;padding:0.5rem;font-size:0.72rem"><strong style="color:var(--accent)">Precision</strong><br><span style="color:var(--muted)">Mots-cles integres organiquement</span></div>
-          <div style="background:#fef3c7;border-radius:8px;padding:0.5rem;font-size:0.72rem"><strong style="color:#92400e">Rapidite</strong><br><span style="color:var(--muted)">Reponse complete en 10 secondes</span></div>
-          <div style="background:#fce7f3;border-radius:8px;padding:0.5rem;font-size:0.72rem"><strong style="color:#9d174d">Fiabilite</strong><br><span style="color:var(--muted)">95%+ utilisable directement</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="feature-text">
-    <span class="feat-badge">Fonctionnalite 6</span>
-    <div class="feat-title">Propulse par GPT-4o</div>
-    <p class="feat-desc">ShopFiche utilise GPT-4o, le modele le plus avance d'OpenAI. Chaque description est naturelle, sans fautes, persuasive et directement utilisable.</p>
-    <ul class="feat-points">
-      <li>95% des fiches utilisables sans modification</li>
-      <li>Phrases toujours completes, jamais coupees</li>
-      <li>Ton adapte a votre marque</li>
-      <li>Optimise pour convertir, pas juste pour le SEO</li>
-    </ul>
-  </div>
-</div>
-
 </div>
 </section>
 
-<!-- COMMENT CA MARCHE -->
 <section id="comment-ca-marche">
 <div class="wrap">
   <h2>Comment ca marche</h2>
@@ -358,104 +129,77 @@ footer a{color:rgba(255,255,255,0.7);text-decoration:none;margin:0 1rem}
 </div>
 </section>
 
-<!-- PRICING -->
 <section id="tarifs" style="background:white;text-align:center">
 <div class="wrap">
   <h2>Un tarif simple</h2>
   <p class="sub">Tout inclus, pas de surprise</p>
   <div class="pricing-card">
     <div class="pricing-badge">Actuellement en beta gratuite</div>
-    <div class="price">29&acirc;ÂÂ¬ <span>/ mois</span></div>
-    <p style="color:var(--muted);font-size:0.9rem;margin-bottom:0.5rem">Prix de lancement &acirc;ÂÂ augmentera apres la beta</p>
+    <div class="price">29&#8364; <span>/ mois</span></div>
+    <p style="color:var(--muted);font-size:0.9rem;margin-bottom:0.5rem">Prix de lancement - augmentera apres la beta</p>
     <ul class="pf">
       <li>Fiches produits illimitees</li>
       <li>Import CSV jusqu'a 100 produits</li>
       <li>Export au format Shopify</li>
       <li>5 langues (FR, EN, ES, DE, IT)</li>
       <li>Score SEO sur chaque fiche</li>
-      <li>IA GPT-4o &acirc;ÂÂ qualite maximale</li>
-      <li>Support par email &acirc;ÂÂ contact@shopfiche.fr</li>
+      <li>IA GPT-4o - qualite maximale</li>
+      <li>Support par email - contact@shopfiche.fr</li>
     </ul>
-    <button onclick="startCheckout()" class="btn-p" style="width:100%;text-align:center;border:none;cursor:pointer">S'abonner &acirc;ÂÂ 29&acirc;ÂÂ¬/mois</button>
-    <div style="font-size:0.8rem;color:var(--muted);margin-top:0.8rem">Sans engagement &#195;Â· Annulation en 1 clic</div>
+    <button onclick="startCheckout()" class="btn-p" style="width:100%;text-align:center;border:none;cursor:pointer">S'abonner - 29&#8364;/mois</button>
+    <div style="font-size:0.8rem;color:var(--muted);margin-top:0.8rem">Sans engagement - Annulation en 1 clic</div>
   </div>
 </div>
 </section>
 
-<!-- FAQ -->
 <section id="faq">
 <div class="faq-wrap">
   <h2>Questions frequentes</h2>
   <p class="sub">Tout ce que vous voulez savoir sur ShopFiche</p>
-
   <div class="faq-cat">Utilisation</div>
-  <div class="faq-item"><div class="faq-q">C'est quoi exactement ShopFiche ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">ShopFiche est un generateur de fiches produits SEO specialise pour Shopify. Vous entrez le nom et les caracteristiques de votre produit, et en 10 secondes vous obtenez une description optimisee pour Google, un Meta Title et une Meta Description, prets a coller directement dans votre boutique.</div></div>
-  <div class="faq-item"><div class="faq-q">Pourquoi ne pas simplement utiliser ChatGPT ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">ChatGPT est un outil generique. ShopFiche est specialise Shopify SEO : le prompt est pre-configure pour generer exactement le bon format avec le bon nombre de mots et les bons criteres SEO Google.fr. Avec l'import CSV vous generez 50 fiches en 5 minutes au lieu de 5 heures. Et l'export est directement au format Shopify &acirc;ÂÂ zero copier-coller.</div></div>
-  <div class="faq-item"><div class="faq-q">Quelle est la qualite des descriptions generees ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">ShopFiche utilise GPT-4o, le modele le plus performant d'OpenAI. Les descriptions sont naturelles, sans fautes, entre 160 et 200 mots, avec les mots-cles integres organiquement. Chaque fiche recoit un score SEO /100. Dans 95% des cas les fiches sont utilisables directement sans modification.</div></div>
-  <div class="faq-item"><div class="faq-q">En combien de temps est generee une fiche ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">Entre 5 et 15 secondes pour un produit unique. Pour l'import CSV en masse, comptez environ 10 secondes par produit &acirc;ÂÂ soit 50 produits en moins de 10 minutes.</div></div>
-  <div class="faq-item"><div class="faq-q">Quelles langues sont disponibles ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">Francais, Anglais, Espagnol, Allemand et Italien. Vous pouvez generer la meme fiche dans plusieurs langues pour vendre dans toute l'Europe.</div></div>
-
+  <div class="faq-item"><div class="faq-q">C'est quoi exactement ShopFiche ? <span class="faq-arr">&#9660;</span></div><div class="faq-a">ShopFiche est un generateur de fiches produits SEO specialise pour Shopify. Vous entrez le nom et les caracteristiques de votre produit, et en 10 secondes vous obtenez une description optimisee pour Google, un Meta Title et une Meta Description, prets a coller dans votre boutique.</div></div>
+  <div class="faq-item"><div class="faq-q">Pourquoi ne pas simplement utiliser ChatGPT ? <span class="faq-arr">&#9660;</span></div><div class="faq-a">ChatGPT est un outil generique. ShopFiche est specialise Shopify SEO : le prompt est pre-configure pour generer exactement le bon format. Avec l'import CSV vous generez 50 fiches en 5 minutes. L'export est au format Shopify - zero copier-coller.</div></div>
+  <div class="faq-item"><div class="faq-q">Quelle est la qualite des descriptions ? <span class="faq-arr">&#9660;</span></div><div class="faq-a">ShopFiche utilise GPT-4o, le modele le plus performant d'OpenAI. Les descriptions sont naturelles, sans fautes, entre 160 et 200 mots. Dans 95% des cas les fiches sont utilisables directement sans modification.</div></div>
+  <div class="faq-item"><div class="faq-q">En combien de temps est generee une fiche ? <span class="faq-arr">&#9660;</span></div><div class="faq-a">Entre 5 et 15 secondes pour un produit unique. Pour l'import CSV, comptez environ 10 secondes par produit - soit 50 produits en moins de 10 minutes.</div></div>
+  <div class="faq-item"><div class="faq-q">Quelles langues sont disponibles ? <span class="faq-arr">&#9660;</span></div><div class="faq-a">Francais, Anglais, Espagnol, Allemand et Italien. Vous pouvez generer la meme fiche dans plusieurs langues pour vendre dans toute l'Europe.</div></div>
   <div class="faq-cat">Technique</div>
-  <div class="faq-item"><div class="faq-q">Comment fonctionne l'import CSV ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">Vous uploadez un fichier CSV avec au minimum une colonne "nom". Vous pouvez ajouter "caracteristiques" et "mots_cles" (separes par des points-virgules). Un modele CSV est telechargeable dans l'application. ShopFiche traite chaque ligne et genere une fiche complete par produit.</div></div>
-  <div class="faq-item"><div class="faq-q">L'export CSV fonctionne directement avec Shopify ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">Oui. Le fichier CSV exporte est au format exact attendu par Shopify (colonnes Handle, Title, Body HTML, SEO Title, SEO Description). Vous allez dans Shopify > Produits > Importer, vous selectionnez le fichier et c'est fait.</div></div>
-  <div class="faq-item"><div class="faq-q">Mes donnees sont-elles securisees ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">Oui. Les noms et caracteristiques de vos produits sont envoyes a l'API OpenAI uniquement pour la generation, et ne sont pas stockes sur nos serveurs. Nous ne conservons aucune donnee personnelle.</div></div>
-  <div class="faq-item"><div class="faq-q">Fonctionne avec d'autres plateformes que Shopify ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">Les descriptions sont utilisables sur n'importe quelle plateforme (WooCommerce, PrestaShop, Wix, etc.). L'export CSV est au format Shopify uniquement, mais les textes peuvent etre copies-colles partout.</div></div>
-
+  <div class="faq-item"><div class="faq-q">Comment fonctionne l'import CSV ? <span class="faq-arr">&#9660;</span></div><div class="faq-a">Uploadez un fichier CSV avec au minimum une colonne "nom". Vous pouvez ajouter "caracteristiques" et "mots_cles" separes par des points-virgules. Un modele CSV est telechargeable dans l'application.</div></div>
+  <div class="faq-item"><div class="faq-q">L'export CSV fonctionne directement avec Shopify ? <span class="faq-arr">&#9660;</span></div><div class="faq-a">Oui. Le fichier CSV exporte est au format exact Shopify (colonnes Handle, Title, Body HTML, SEO Title, SEO Description). Shopify > Produits > Importer > 1 clic.</div></div>
+  <div class="faq-item"><div class="faq-q">Mes donnees sont-elles securisees ? <span class="faq-arr">&#9660;</span></div><div class="faq-a">Oui. Les noms et caracteristiques de vos produits sont envoyes a l'API OpenAI uniquement pour la generation. Nous ne stockons aucune donnee personnelle.</div></div>
   <div class="faq-cat">Commercial</div>
-  <div class="faq-item"><div class="faq-q">C'est vraiment gratuit pendant la beta ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">Oui, 100% gratuit pendant la periode beta, sans carte bancaire requise. Profitez-en pour tester avec tous vos produits. Le prix passera a 29&acirc;ÂÂ¬/mois apres la beta.</div></div>
-  <div class="faq-item"><div class="faq-q">Combien ca coutera apres la beta ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">29&acirc;ÂÂ¬/mois tout inclus &acirc;ÂÂ fiches illimitees, CSV, export Shopify, multilingue. Les utilisateurs beta beneficieront d'un tarif preferentiel.</div></div>
-  <div class="faq-item"><div class="faq-q">Puis-je annuler a tout moment ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">Oui, sans engagement, sans frais de resiliation. Annulation en 1 clic depuis votre espace client.</div></div>
-  <div class="faq-item"><div class="faq-q">Y a-t-il une limite de fiches par mois ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">Non. Generez autant de fiches que vous voulez, pour autant de produits que vous avez. Aucune limite.</div></div>
-  <div class="faq-item"><div class="faq-q">ShopFiche garantit-il un meilleur classement Google ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">ShopFiche optimise vos fiches selon les meilleures pratiques SEO. Cela ameliore significativement vos chances d'etre bien references, mais le classement depend aussi de nombreux autres facteurs. Aucun outil ne peut garantir un classement specifique.</div></div>
-  <div class="faq-item"><div class="faq-q">Comment contacter le support ? <span class="faq-arr">&acirc;ÂÂ¾</span></div><div class="faq-a">Envoyez-nous un email a contact@shopfiche.fr. Nous repondons sous 24h en jours ouvrables.</div></div>
+  <div class="faq-item"><div class="faq-q">C'est vraiment gratuit pendant la beta ? <span class="faq-arr">&#9660;</span></div><div class="faq-a">Oui, 100% gratuit pendant la periode beta, sans carte bancaire requise. Le prix passera a 29&#8364;/mois apres la beta.</div></div>
+  <div class="faq-item"><div class="faq-q">Puis-je annuler a tout moment ? <span class="faq-arr">&#9660;</span></div><div class="faq-a">Oui, sans engagement, sans frais de resiliation. Annulation en 1 clic depuis votre espace client.</div></div>
+  <div class="faq-item"><div class="faq-q">Y a-t-il une limite de fiches par mois ? <span class="faq-arr">&#9660;</span></div><div class="faq-a">Non. Generez autant de fiches que vous voulez. Aucune limite.</div></div>
+  <div class="faq-item"><div class="faq-q">Comment contacter le support ? <span class="faq-arr">&#9660;</span></div><div class="faq-a">Envoyez un email a contact@shopfiche.fr. Nous repondons sous 24h en jours ouvrables.</div></div>
 </div>
 </section>
 
-<!-- CTA -->
-<section class="cta">
+<section class="cta-section">
   <h2>Pret a scaler votre boutique Shopify ?</h2>
-  <p>Rejoignez les dropshippers qui utilisent ShopFiche pour generer leurs fiches produits en masse.</p>
-  <a href="/generator.html" class="btn-w">Commencer gratuitement &acirc;ÂÂ sans carte bancaire</a>
+  <p class="sub">Rejoignez les dropshippers qui utilisent ShopFiche pour generer leurs fiches produits en masse.</p>
+  <a href="/generator.html" class="btn-w">Commencer gratuitement - sans carte bancaire</a>
 </section>
 
 <footer>
-  <div>&#195;Â© 2025 ShopFiche &acirc;ÂÂ contact@shopfiche.fr</div>
-  <div style="margin-top:0.5rem"><a href="/generator.html">Generateur</a><a href="#faq">FAQ</a><a href="#tarifs">Tarifs</a></div>
+  <div>&#169; 2025 ShopFiche - contact@shopfiche.fr</div>
+  <div style="margin-top:0.5rem"><a href="/generator.html">Generateur</a><a href="#faq">FAQ</a><a href="#tarifs">Tarifs</a><a href="/fondateur.html">Beta Fondateur</a></div>
 </footer>
 
 <script>
 document.querySelectorAll('.faq-q').forEach(q=>{
   q.addEventListener('click',()=>{
-    const item=q.parentElement;
-    const wasOpen=item.classList.contains('open');
+    const item=q.parentElement;const wasOpen=item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
     if(!wasOpen)item.classList.add('open');
   });
 });
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.preventDefault();
-    const el=document.querySelector(a.getAttribute('href'));
-    if(el)el.scrollIntoView({behavior:'smooth'});
-  });
+  a.addEventListener('click',e=>{e.preventDefault();const el=document.querySelector(a.getAttribute('href'));if(el)el.scrollIntoView({behavior:'smooth'})});
 });
-
-async function loadHomePlaces() {
-  try {
-    const r = await fetch('/api/founders/count');
-    const d = await r.json();
-    const el = document.getElementById('homePlaces');
-    if(el) el.textContent = 100 - (d.count||0);
-  } catch(e) {}
-}
+async function loadHomePlaces(){try{const r=await fetch('/api/founders/count');const d=await r.json();const el=document.getElementById('homePlaces');if(el)el.textContent=100-(d.count||0);}catch(e){}}
 loadHomePlaces();
 async function startCheckout(){
-  try{
-    const r=await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'}});
-    const d=await r.json();
-    if(d.url)window.location.href=d.url;
-    else alert('Erreur: '+(d.error||'inconnue'));
-  }catch(e){alert('Erreur de connexion');}
+  try{const r=await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'}});const d=await r.json();if(d.url)window.location.href=d.url;else alert('Erreur: '+(d.error||'inconnue'));}catch(e){alert('Erreur de connexion');}
 }
 </script>
 </body>
