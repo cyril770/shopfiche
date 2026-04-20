@@ -26,9 +26,18 @@ app.post('/api/generate', (req, res) => {
 
            const body = JSON.stringify({
                  model: 'gpt-4o-mini',
-                 max_tokens: 800,
+                 max_tokens: 1500,
                  stream: true,
-                 messages: [{ role: 'user', content: prompt }]
+                 messages: [{ role: 'system', content: 'Tu es un expert SEO e-commerce. Réponds TOUJOURS dans ce format exact:
+
+DESCRIPTION:
+[description produit 150-200 mots, persuasive et SEO-optimisée]
+
+META_TITLE:
+[titre SEO, maximum 60 caractères]
+
+META_DESCRIPTION:
+[description meta, maximum 160 caractères]' }, { role: 'user', content: prompt }]
            });
 
            const options = {
